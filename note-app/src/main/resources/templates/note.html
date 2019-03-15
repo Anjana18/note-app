@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Gloria+Hallelujah'
+	rel='stylesheet' type='text/css'>
+<link href="/note.css" type='text/css' rel='stylesheet'>
+</head>
+<body>
+
+	<div class="container">
+		<h2>Dash Board</h2>
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+			data-target="#myModal">Add Note</button>
+		<div id="board"></div>
+
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="note">
+			<form action="note">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<textarea class="title" name="title" placeholder="Enter the Title"></textarea>
+
+
+				<textarea class="desc" name="description"
+					placeholder="Enter the Description"></textarea>
+					
+				<input type="submit" value="submit" class="btn btn-default" data-dismiss="modal"
+				id="add_new">
+			</form>
+			</div>
+			
+
+
+
+		</div>
+</body>
+</html>

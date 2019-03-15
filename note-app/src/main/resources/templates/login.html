@@ -1,0 +1,44 @@
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="/login.css" rel="stylesheet">
+<script type="text/javascript" src="/login.js"></script>
+<title>Login</title>
+</head>
+<body>
+	<!------ Include the above in your HEAD tag ---------->
+
+	<div class="login-reg-panel">
+		<div class="login-info-box">
+			<h2>Have an account?</h2>
+			<div class="black-panel">
+				<form action="login" method="post">
+					<h2>LOGIN</h2>
+					<input type="text" placeholder="Username / Email" name="name">
+					<input type="password" placeholder="Password" name="password">
+					<input type="submit" value="Login">
+				</form>
+			</div>
+		</div>
+		
+		<div class="register-info-box">
+			<h2>Don't have an account?</h2>
+			<form action="signup" method="post">
+				<h2>REGISTER</h2>
+				<input type="text" placeholder="Username" name="name"> <input
+					type="text" placeholder="Email ID" name="email"> <input
+					type="password" placeholder="Password" name="password"> <input
+					type="submit" value="Register">
+			</form>
+		</div>
+
+	</div>
+
+</body>
+</html>

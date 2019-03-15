@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Mukta');
+
+body {
+	font-family: 'Mukta', sans-serif;
+	height: 100vh;
+	min-height: 550px;
+	background-image: url(https://www.india-interactive.net/images/about.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	overflow-y: hidden;
+}
+
+a {
+	text-decoration: none;
+	color: #444444;
+}
+
+.login-reg-panel {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+	width: 70%;
+	right: 0;
+	left: 0;
+	margin: auto;
+	height: 550px;
+	background-color: #DC6565;
+	color:#FFFFFF;
+}
+
+.black-panel {
+	background-color: #000000;
+	height: 620px;
+	position: absolute;
+	padding:70px;
+	top: -130px;
+	width: 110%;
+	right: calc(-10% - 40px);
+	transition: .3s ease-in-out;
+	z-index: 0;
+	box-shadow: 0 0 15px 9px #00000096;
+	
+}
+
+.login-info-box {
+	width: 40%;
+	padding: 0 50px;
+	top: 20%;
+	position: absolute;
+	text-align: center;
+}
+
+.register-info-box {
+    height: 350px;
+	width: 40%;
+	padding-right:70px;
+	top: 20%;
+	right: 0;
+	position: absolute;
+	text-align: center;
+}
+
+.right-log {
+	right: 50px !important;
+}
+
+.login-reg-panel input[type="text"], .login-reg-panel input[type="password"],.login-reg-panel input[type="email"] {
+	width: 100%;
+	display: block;
+	margin: 20px 0;
+	padding: 15px;
+	border: 1px solid #b5b5b5;
+	outline: none;
+	
+}
+.login-reg-panel input[type="submit"] {
+	max-width: 150px;
+	width: 100%;
+	background: #444444;
+	color: #f9f9f9;
+	border: none;
+	padding: 10px;
+	text-transform: uppercase;
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+.credit {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	color: #3B3B25;
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	z-index: 99;
+}
+
+a {
+	text-decoration: none;
+	color: #2c7715;
+}

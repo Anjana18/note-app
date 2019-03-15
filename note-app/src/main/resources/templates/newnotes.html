@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <link href='https://fonts.googleapis.com/css?family=Gloria+Hallelujah'
+	rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div class="note">
+        <a href="javascript:;" class="button remove">X</a>
+        <div class="note_cnt">
+            <textarea class="title" placeholder="Enter note title" name="title"></textarea>
+            <textarea class="cnt" placeholder="Enter note description here" name="description"></textarea>
+        </div>
+        <a onClick="saveNote(document.getElementByName('title'),document.getElementByName('description'))" class="button save" id="add_new">Save</a>
+    </div>
+</body>
+
+</html>
+
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script
+	src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+
+
+
+<script src="/note.js"></script>
