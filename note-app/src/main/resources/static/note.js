@@ -61,11 +61,11 @@
 })(jQuery);
 var noteZindex = 1;
 function deleteNote(){
-    $(this).parent('.note').hide("puff",{ percent: 133}, 250);
+    $(this).parent('.add_note').hide("puff",{ percent: 133}, 250);
 };
 
 function newNote() {
-    var noteTemp=document.getElementsByClassName("note");
+    var noteTemp=document.getElementsByClassName("add_note");
   $(noteTemp).appendTo("#board").show("fade", 300).draggable().on('dragstart',
     function(){
        $(this).zIndex(++noteZindex);
@@ -74,7 +74,7 @@ function newNote() {
 	$('.remove').click(deleteNote);
 	$('textarea').autogrow();
 	
-  $('.note')
+  $('.add_note')
 	return false; 
 };
 

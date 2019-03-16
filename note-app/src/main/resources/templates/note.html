@@ -1,45 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://thymeleaf.org">
+
 <head>
-<title>Bootstrap Example</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<link href='https://fonts.googleapis.com/css?family=Gloria+Hallelujah'
-	rel='stylesheet' type='text/css'>
-<link href="/note.css" type='text/css' rel='stylesheet'>
+    <title>Dash Board</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
+    <link href="/note.css" type='text/css' rel='stylesheet'>
+    <script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
 </head>
+
 <body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" th:text="${username}"></a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a></a></li>
+                <li><a></a></li>
+                <li class="active"><button data-toggle="modal" data-target="#myModal" class="btn btn-lg"><span>Add Notes</span></button></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/" class="btn btn-lg"><span class="glyphicon glyphicon-log-out" >Logout</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h2>Welcome to dash board..</h2>
+        <div id="board">
 
-	<div class="container">
-		<h2>Dash Board</h2>
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-			data-target="#myModal">Add Note</button>
-		<div id="board"></div>
-
-		<div class="modal fade" id="myModal" role="dialog">
-			<div class="note">
-			<form action="note">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<textarea class="title" name="title" placeholder="Enter the Title"></textarea>
-
-
-				<textarea class="desc" name="description"
-					placeholder="Enter the Description"></textarea>
-					
-				<input type="submit" value="submit" class="btn btn-default" data-dismiss="modal"
-				id="add_new">
-			</form>
-			</div>
-			
+            <div th:if="${not #lists.isEmpty(notes)}">
+                <div class="notes" th:each="note: ${notes}" th:for="${'note' + noteStat.index}">
+                    <form id=noteupdate method="POST">
+                        <input type="submit" value="&times;" class="close" data-dismiss="modal" formaction="#"
+                            th:formaction="@{/delete}" aria-label="Close" aria-hidden="true">
+                        <textarea class="notes_title" name="notes_title" id="notes_title" th:text="${note.getNoteTitle()}"></textarea>
+                        <textarea class="notes_description" name="notes_description" id="notes_description" th:text="${note.getNoteDiscription()}"></textarea>
+                        <input type="hidden" name="username" id="notes_username" th:value=${username}>
+                        <input type="hidden" name="noteid" calss="noteid" id="noteid" th:value=${note.getNoteId()}>
+                        <input type="submit" class="btn btn-success btn-lg" formaction="#" th:formaction="@{/note}" value="Update">
+                    </form>
+                </div>
+            </div>
+        </div>
 
 
+        <div class="modal fade" id="myModal" role="dialog" data-toggle="modal">
+            <div class="add_note">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <textarea class="title" name="title" id="title" placeholder="Enter the Title"></textarea>
+                <textarea class="desc" name="description" id="description" placeholder="Enter the Description"></textarea>
+                <lable th:if="${username!=null}">
+                    <input type="hidden" name="username" id="username" th:value=${username}>
+                </lable>
+                <input type="button" value="Save" class="btn btn-success" data-dismiss="modal" onclick="doAjaxPost()"
+                    id="add_new">
 
-		</div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
+
+<script type="text/javascript">
+
+    function doAjaxPost() {
+        // get the form values  
+        var title = $('#title').val();
+        var description = $('#description').val();
+        var username = $('#username').val();
+
+
+        $.ajax({
+            type: 'POST',
+            url: "/note",
+
+            data: {
+                "title": title,
+                "description": description,
+                "username": username
+            },
+            success: function (response) {
+                window.location.reload()
+            },
+            error: function (e) {
+
+                window.location.reload()
+            }
+        });
+    }
+
+
+
+</script>

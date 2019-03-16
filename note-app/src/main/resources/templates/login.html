@@ -10,6 +10,12 @@
 <link href="/login.css" rel="stylesheet">
 <script type="text/javascript" src="/login.js"></script>
 <title>Login</title>
+<script type="text/javascript" >
+   function preventBack(){window.history.forward();}
+   set
+    setTimeout("preventBack()", 0);
+    window.onunload=function(){null};
+</script>
 </head>
 <body>
 	<!------ Include the above in your HEAD tag ---------->
@@ -19,7 +25,8 @@
 			<h2>Have an account?</h2>
 			<div class="black-panel">
 				<form action="login" method="post">
-					<h2>LOGIN</h2>
+                    <h2>LOGIN</h2>
+                    <span th:text="${login_err}"></span>
 					<input type="text" placeholder="Username / Email" name="name">
 					<input type="password" placeholder="Password" name="password">
 					<input type="submit" value="Login">
@@ -30,7 +37,8 @@
 		<div class="register-info-box">
 			<h2>Don't have an account?</h2>
 			<form action="signup" method="post">
-				<h2>REGISTER</h2>
+                <h2>REGISTER</h2>
+                <span th:text="${signup_err}"></span>
 				<input type="text" placeholder="Username" name="name"> <input
 					type="text" placeholder="Email ID" name="email"> <input
 					type="password" placeholder="Password" name="password"> <input

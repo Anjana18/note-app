@@ -44,7 +44,7 @@
   clear: both;
 }
 
-.noflick, #board, .note, .button {
+.noflick, #board, .add_note, .button {
   -webkit-perspective: 1000;
           perspective: 1000;
   -webkit-backface-visibility: hidden;
@@ -68,6 +68,9 @@ textarea {
   color: #000000;
 }
 
+.navbar-brand{
+    text-transform: capitalize;
+}
 body {
   font-size: 1em;
   line-height: 1;
@@ -107,12 +110,12 @@ a:focus {
   overflow-y: visible;
 }
 
-.note {
+.add_note {
   float: left;
   display: block;
   position: relative;
   padding: 1em;
-  width: 300px;
+  width: 400px;
   min-height: 300px;
   margin: 0 30px 30px 0;
   background: linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.25));
@@ -127,10 +130,31 @@ a:focus {
   transition: transform .15s, -webkit-transform .15s;
   z-index: 1;
 }
-.note:hover {
+
+.notes {
+  
+  display: block;
+  position: relative;
+  padding: 1em;
+  width: 500px;
+  min-height: 300px;
+  margin: 0 30px 30px 0;
+  background: linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.25));
+  background-color: #FFFD75;
+  box-shadow: 5px 5px 10px -2px rgba(33, 33, 33, 0.3);
+  -webkit-transform: rotate(2deg);
+          transform: rotate(2deg);
+  -webkit-transform: skew(-1deg, 1deg);
+          transform: skew(-1deg, 1deg);
+  transition: -webkit-transform .15s;
+  transition: transform .15s;
+  transition: transform .15s, -webkit-transform .15s;
+  z-index: 1;
+}
+.add_note:hover {
   cursor: move;
 }
-.note.ui-draggable-dragging:nth-child(n) {
+.add_note.ui-draggable-dragging:nth-child(n) {
   box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, 0.3);
   -webkit-transform: scale(1.125) !important;
           transform: scale(1.125) !important;
@@ -140,7 +164,7 @@ a:focus {
   transition: transform .150s;
   transition: transform .150s, -webkit-transform .150s;
 }
-.note textarea {
+.add_note textarea,.notes textarea {
   background-color: transparent;
   border: none;
   resize: vertical;
@@ -148,25 +172,39 @@ a:focus {
   width: 100%;
   padding: 5px;
 }
-.note textarea:focus {
+.add_note textarea:focus {
   outline: none;
   border: none;
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2) inset;
 }
-.note textarea.title {
-  font-size: 24px;
+.add_note textarea.title {
+  font-size: 15px;
   line-height: 1.2;
   color: #000000;
-  height: 64px;
+  height: 100px;
   margin-top: 20px;
 }
-.note textarea.desc {
-  min-height: 200px;
+.add_note textarea.desc {
+  min-height: 250px;
+  font-size: 14px;
 }
-.note:nth-child(2n) {
+
+.notes textarea.notes_title {
+  font-size: 15px;
+  line-height: 1.2;
+  color: #000000;
+  height: 32px;
+  margin-top: 20px;
+}
+.notes textarea.notes_description {
+  min-height: 200px;
+  font-size: 14px;
+}
+
+.notes:nth-child(2n) , .add_note:nth-child(2n){
   background: #FAAACA;
 }
-.note:nth-child(3n) {
+.notes:nth-child(3n),.add_note:nth-child(3n) {
   background: #69F098;
 }
 

@@ -38,14 +38,6 @@ public class Note {
 	@JoinColumn(name="user_id")
 	private User user;
 
-	public Note(String title1, String discription, User user) {
-		this.noteTitle=title1;
-		this.noteDiscription=discription;
-		this.user=user;
-	}
-	public Note() {
-		
-	}
 
 	public Long getNoteId() {
 		return noteId;

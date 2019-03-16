@@ -19,14 +19,14 @@ public class AppConstants {
 	public static final String MSG_ACCOUNT_CREATION = "login.username.creation.success";
 	public static final String MSG_ACCOUNT_ALREADY_EXIST = "login.userName.email.already.exists";
 	public static final String RESPONSE_ERROR = "Error";
-	public static final String URL_LOGOUT = "/logout";
+	public static final String URL_LOGOUT = "logout";
 	public static final String PARAM_NOTE_TITLE = "title";
 	public static final String PARAM_NOTE_DISCRIPTION = "description";
 	public static final String NOTE_SAVED = "Saved";
 	public static final String MESSAGE_NOTE_SAVED = "dashboard.title.saved";
 	public static final String NEW_NOTE = "note";
-	public static final String USER_DETAILS = "user";
-	public static final String NOTE_LIST = "notelist";
+	public static final String USER_DETAILS = "username";
+	public static final String NOTE_LIST = "notes";
 	public static final String LIST_VIEW_OF_NOTES = "List Of Notes";
 	public static final String NOTES = "notes";
 	public static final String UPDATE_NOTE = "/update";
