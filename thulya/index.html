@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Thulya — Tailor Made For You. Premium boutique for sarees, designer blouses, aari work, tailoring & more." />
+  <title>Thulya — Tailor Made For You</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ============ DESIGN TOKENS ============ */
+    :root {
+      --royal: #1a2b6b;
+      --royal-deep: #101b47;
+      --royal-soft: #2e42a0;
+      --blush: #f7d9e3;
+      --blush-deep: #e79cb6;
+      --gold: #c9a54e;
+      --gold-bright: #e6c877;
+      --white: #ffffff;
+      --ivory: #fbf8f4;
+      --ink: #23263a;
+      --muted: #6b6f85;
+      --line: #ece7df;
+      --card: #ffffff;
+      --bg: #fbf8f4;
+      --bg-alt: #f4eee6;
+      --shadow-sm: 0 2px 10px rgba(26,43,107,.06);
+      --shadow: 0 12px 40px rgba(26,43,107,.10);
+      --shadow-lg: 0 24px 70px rgba(26,43,107,.16);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --grad-royal: linear-gradient(135deg, #1a2b6b, #2e42a0);
+      --grad-gold: linear-gradient(135deg, #c9a54e, #e6c877);
+      --grad-blush: linear-gradient(135deg, #f7d9e3, #e79cb6);
+      --font-head: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --font-body: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    [data-theme="dark"] {
+      --white: #ffffff;
+      --ivory: #171826;
+      --ink: #eef0fb;
+      --muted: #a1a6c4;
+      --line: #2a2c44;
+      --card: #1d1f30;
+      --bg: #12131f;
+      --bg-alt: #191b2a;
+      --blush: #3a2733;
+      --shadow-sm: 0 2px 10px rgba(0,0,0,.3);
+      --shadow: 0 12px 40px rgba(0,0,0,.45);
+      --shadow-lg: 0 24px 70px rgba(0,0,0,.55);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background .4s ease, color .4s ease;
+    }
+    h1,h2,h3,h4 { font-family: var(--font-head); font-weight: 700; line-height: 1.15; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    ::selection { background: var(--gold); color: #fff; }
+
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 0 22px; }
+    .eyebrow { font-size: .72rem; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .section-title { font-size: clamp(1.5rem, 3.4vw, 2.3rem); color: var(--ink); }
+    .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 26px; flex-wrap: wrap; }
+    .link-more { color: var(--royal-soft); font-weight: 600; font-size: .85rem; display: inline-flex; gap: 6px; align-items: center; }
+    [data-theme="dark"] .link-more { color: var(--gold-bright); }
+    section.block { padding: 62px 0; }
+    .gold-line { width: 54px; height: 3px; background: var(--grad-gold); border-radius: 3px; margin-top: 10px; }
+
+    /* ============ TOP BAR ============ */
+    .announce { background: var(--grad-royal); color: #fff; text-align: center; font-size: .78rem; letter-spacing: .05em; padding: 8px 12px; }
+    .announce b { color: var(--gold-bright); }
+
+    header.nav {
+      position: sticky; top: 0; z-index: 60;
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      backdrop-filter: blur(18px) saturate(1.2);
+      -webkit-backdrop-filter: blur(18px) saturate(1.2);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { display: flex; align-items: center; gap: 18px; padding: 14px 22px; max-width: 1240px; margin: 0 auto; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark {
+      width: 42px; height: 42px; border-radius: 13px; display: grid; place-items: center;
+      background: var(--grad-royal); color: var(--gold-bright); font-family: var(--font-head);
+      font-weight: 800; font-size: 1.35rem; box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(230,200,119,.35);
+    }
+    .brand-name { font-family: var(--font-head); font-weight: 800; font-size: 1.15rem; letter-spacing: .01em; }
+    .brand-name span { color: var(--gold); }
+    .brand-tag { font-size: .6rem; letter-spacing: .32em; text-transform: uppercase; color: var(--muted); }
+
+    .nav-links { display: flex; gap: 4px; margin-left: 8px; }
+    .nav-links button {
+      padding: 9px 14px; border-radius: 11px; font-size: .84rem; font-weight: 500; color: var(--muted);
+      transition: all .2s;
+    }
+    .nav-links button:hover { color: var(--ink); background: var(--bg-alt); }
+    .nav-links button.active { color: var(--royal-soft); background: color-mix(in srgb, var(--royal) 10%, transparent); font-weight: 600; }
+    [data-theme="dark"] .nav-links button.active { color: var(--gold-bright); }
+
+    .search {
+      flex: 1; max-width: 320px; margin-left: auto; display: flex; align-items: center; gap: 8px;
+      background: var(--card); border: 1px solid var(--line); border-radius: 30px; padding: 9px 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .search input { border: none; background: none; outline: none; flex: 1; font-size: .85rem; color: var(--ink); }
+    .search input::placeholder { color: var(--muted); }
+
+    .nav-actions { display: flex; align-items: center; gap: 6px; }
+    .icon-btn {
+      width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; position: relative;
+      color: var(--ink); transition: all .2s; border: 1px solid transparent;
+    }
+    .icon-btn:hover { background: var(--bg-alt); border-color: var(--line); }
+    .badge {
+      position: absolute; top: 3px; right: 3px; min-width: 18px; height: 18px; padding: 0 5px;
+      background: var(--blush-deep); color: #fff; font-size: .62rem; font-weight: 700; border-radius: 9px;
+      display: grid; place-items: center; box-shadow: 0 2px 6px rgba(231,156,182,.5);
+    }
+    .badge.gold { background: var(--gold); }
+    .menu-toggle { display: none; }
+
+    /* ============ HERO ============ */
+    .hero { position: relative; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; padding: 56px 0 40px; }
+    .hero-copy h1 { font-size: clamp(2.4rem, 5.6vw, 4.1rem); letter-spacing: -.01em; }
+    .hero-copy h1 em { font-style: italic; color: var(--gold); }
+    .hero-copy p { color: var(--muted); font-size: 1.05rem; margin: 20px 0 30px; max-width: 460px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 9px; background: var(--card); border: 1px solid var(--line); padding: 7px 15px; border-radius: 30px; font-size: .78rem; font-weight: 500; box-shadow: var(--shadow-sm); margin-bottom: 22px; }
+    .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px rgba(201,165,78,.2); }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-stats { display: flex; gap: 30px; margin-top: 38px; }
+    .hero-stats .num { font-family: var(--font-head); font-size: 1.7rem; font-weight: 700; color: var(--royal-soft); }
+    [data-theme="dark"] .hero-stats .num { color: var(--gold-bright); }
+    .hero-stats .lbl { font-size: .72rem; color: var(--muted); letter-spacing: .04em; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 9px; padding: 13px 26px; border-radius: 30px;
+      font-weight: 600; font-size: .9rem; transition: all .25s; white-space: nowrap;
+    }
+    .btn-primary { background: var(--grad-royal); color: #fff; box-shadow: 0 12px 30px rgba(26,43,107,.28); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(26,43,107,.36); }
+    .btn-gold { background: var(--grad-gold); color: #3a2c05; box-shadow: 0 12px 30px rgba(201,165,78,.32); }
+    .btn-gold:hover { transform: translateY(-2px); }
+    .btn-ghost { background: var(--card); color: var(--ink); border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
+    .btn-ghost:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .btn-wa { background: #25d366; color: #fff; }
+    .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(37,211,102,.4); }
+    .btn-sm { padding: 9px 16px; font-size: .8rem; }
+
+    .hero-visual { position: relative; height: 480px; }
+    .hero-card {
+      position: absolute; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg);
+      border: 4px solid var(--card);
+    }
+    .hero-card .ph { width: 100%; height: 100%; }
+    .hc1 { width: 62%; height: 100%; left: 0; top: 0; z-index: 2; }
+    .hc2 { width: 46%; height: 55%; right: 0; top: 6%; z-index: 3; }
+    .hc3 { width: 42%; height: 40%; right: 8%; bottom: 0; z-index: 3; }
+    .hero-float {
+      position: absolute; z-index: 4; background: var(--card); border-radius: 16px; padding: 12px 16px;
+      box-shadow: var(--shadow); display: flex; align-items: center; gap: 11px; border: 1px solid var(--line);
+    }
+    .hf-tl { top: 12%; left: -18px; animation: float 5s ease-in-out infinite; }
+    .hf-br { bottom: 16%; right: -12px; animation: float 5s ease-in-out infinite .8s; }
+    .hero-float .em { font-size: 1.4rem; }
+    .hero-float .t { font-weight: 700; font-size: .82rem; }
+    .hero-float .s { font-size: .68rem; color: var(--muted); }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-11px)} }
+
+    /* ============ PLACEHOLDER "IMAGES" ============ */
+    .ph { position: relative; display: grid; place-items: center; overflow: hidden; }
+    .ph::after { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 90% at 20% 10%, rgba(255,255,255,.25), transparent 55%); }
+    .ph .ph-label { position: relative; z-index: 2; font-family: var(--font-head); color: rgba(255,255,255,.92); font-weight: 600; font-size: 1.05rem; text-align: center; padding: 0 14px; text-shadow: 0 2px 12px rgba(0,0,0,.25); letter-spacing: .02em; }
+    .ph .ph-em { position: absolute; font-size: 3.4rem; opacity: .28; top: 14%; right: 12%; filter: drop-shadow(0 4px 8px rgba(0,0,0,.2)); }
+    .g1 { background: linear-gradient(150deg, #1a2b6b, #3a4fb0); }
+    .g2 { background: linear-gradient(150deg, #b23a68, #e79cb6); }
+    .g3 { background: linear-gradient(150deg, #7a2450, #d16a94); }
+    .g4 { background: linear-gradient(150deg, #245a5a, #63b8a8); }
+    .g5 { background: linear-gradient(150deg, #8a6a1e, #d9b862); }
+    .g6 { background: linear-gradient(150deg, #3a2d6b, #7b6ad1); }
+    .g7 { background: linear-gradient(150deg, #6b1a3a, #c26a8a); }
+    .g8 { background: linear-gradient(150deg, #2b4a7a, #6a9ad1); }
+
+    /* ============ CATEGORY STRIP ============ */
+    .cat-strip { display: flex; gap: 14px; overflow-x: auto; padding: 6px 2px 10px; scrollbar-width: none; }
+    .cat-strip::-webkit-scrollbar { display: none; }
+    .cat-pill {
+      flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer;
+    }
+    .cat-pill .circle {
+      width: 82px; height: 82px; border-radius: 50%; display: grid; place-items: center; font-size: 2rem;
+      background: var(--card); border: 1.5px solid var(--line); box-shadow: var(--shadow-sm); transition: all .25s;
+    }
+    .cat-pill:hover .circle { transform: translateY(-4px); border-color: var(--gold); box-shadow: var(--shadow); }
+    .cat-pill .nm { font-size: .78rem; font-weight: 500; color: var(--muted); }
+
+    /* ============ PRODUCT CARDS ============ */
+    .prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .prod-grid.wide { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+    .card {
+      background: var(--card); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm);
+      border: 1px solid var(--line); transition: all .3s; position: relative;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .card-media { position: relative; aspect-ratio: 3/4; cursor: pointer; }
+    .card-media .ph { width: 100%; height: 100%; }
+    .card-tag {
+      position: absolute; top: 12px; left: 12px; z-index: 3; background: var(--grad-gold); color: #3a2c05;
+      font-size: .66rem; font-weight: 700; padding: 5px 11px; border-radius: 20px; letter-spacing: .04em;
+    }
+    .card-tag.new { background: var(--grad-royal); color: #fff; }
+    .card-tag.sale { background: var(--blush-deep); color: #fff; }
+    .card-wish {
+      position: absolute; top: 10px; right: 10px; z-index: 3; width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,.9); display: grid; place-items: center; box-shadow: var(--shadow-sm);
+      transition: all .2s; font-size: 1rem;
+    }
+    .card-wish:hover { transform: scale(1.12); }
+    .card-wish.on { background: var(--blush-deep); }
+    .card-body { padding: 15px 16px 17px; }
+    .card-cat { font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .card-name { font-family: var(--font-head); font-weight: 600; font-size: 1rem; margin: 4px 0 8px; color: var(--ink); }
+    .card-rate { display: flex; align-items: center; gap: 5px; font-size: .74rem; color: var(--muted); margin-bottom: 9px; }
+    .stars { color: var(--gold); letter-spacing: 1px; }
+    .price-row { display: flex; align-items: baseline; gap: 8px; }
+    .price { font-weight: 700; font-size: 1.12rem; color: var(--ink); }
+    .price-old { font-size: .85rem; color: var(--muted); text-decoration: line-through; }
+    .price-off { font-size: .72rem; color: #2f9e5f; font-weight: 600; }
+    .card-add {
+      margin-top: 12px; width: 100%; padding: 10px; border-radius: 12px; background: var(--bg-alt);
+      color: var(--royal-soft); font-weight: 600; font-size: .82rem; transition: all .2s; border: 1px solid transparent;
+    }
+    [data-theme="dark"] .card-add { color: var(--gold-bright); }
+    .card-add:hover { background: var(--grad-royal); color: #fff; }
+
+    /* ============ RIBBON / OFFER BANNER ============ */
+    .offer-banner {
+      background: var(--grad-royal); border-radius: var(--radius); padding: 42px; color: #fff; position: relative;
+      overflow: hidden; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 24px;
+    }
+    .offer-banner::before { content: "✦"; position: absolute; font-size: 16rem; opacity: .06; right: 4%; top: -30%; }
+    .offer-banner h2 { color: #fff; font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+    .offer-banner h2 em { color: var(--gold-bright); font-style: italic; }
+    .offer-banner p { color: rgba(255,255,255,.82); margin-top: 8px; }
+    .coupon { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; background: rgba(255,255,255,.12); border: 1px dashed var(--gold-bright); border-radius: 12px; padding: 10px 18px; font-weight: 600; }
+    .coupon b { color: var(--gold-bright); letter-spacing: .1em; }
+
+    /* ============ TAILORING ============ */
+    .tailor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .tailor-card {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px;
+      box-shadow: var(--shadow-sm); transition: all .3s;
+    }
+    .tailor-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--gold); }
+    .tailor-card .ic { width: 54px; height: 54px; border-radius: 15px; display: grid; place-items: center; font-size: 1.7rem; background: var(--blush); margin-bottom: 15px; }
+    .tailor-card h4 { font-size: 1.15rem; margin-bottom: 6px; }
+    .tailor-card .desc { font-size: .82rem; color: var(--muted); margin-bottom: 14px; min-height: 40px; }
+    .price-list { display: flex; flex-direction: column; gap: 7px; }
+    .price-list .pl-row { display: flex; justify-content: space-between; align-items: center; font-size: .84rem; padding: 6px 0; border-bottom: 1px dashed var(--line); }
+    .price-list .pl-row:last-child { border-bottom: none; }
+    .price-list .pl-price { font-weight: 700; color: var(--royal-soft); }
+    [data-theme="dark"] .price-list .pl-price { color: var(--gold-bright); }
+    .price-list .pl-price[contenteditable="true"] { outline: 1px dashed var(--gold); border-radius: 6px; padding: 1px 6px; }
+
+    /* ============ BOOKING / FORMS ============ */
+    .panel { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { font-size: .78rem; font-weight: 600; color: var(--ink); }
+    .field input, .field select, .field textarea {
+      padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg);
+      color: var(--ink); font-family: inherit; font-size: .88rem; outline: none; transition: all .2s;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,165,78,.15); }
+    .seg { display: flex; gap: 10px; flex-wrap: wrap; }
+    .seg .opt {
+      flex: 1; min-width: 130px; border: 1.5px solid var(--line); border-radius: 14px; padding: 14px; cursor: pointer;
+      transition: all .2s; text-align: center; background: var(--bg);
+    }
+    .seg .opt.sel { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 10%, transparent); }
+    .seg .opt .em { font-size: 1.5rem; }
+    .seg .opt .t { font-weight: 600; font-size: .84rem; margin-top: 5px; }
+    .seg .opt .s { font-size: .7rem; color: var(--muted); }
+
+    /* ============ ORDER TRACKING ============ */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .tl-row { display: grid; grid-template-columns: 40px 1fr; gap: 16px; position: relative; }
+    .tl-dot { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font-size: .85rem; z-index: 2; background: var(--bg-alt); color: var(--muted); border: 2px solid var(--line); }
+    .tl-row.done .tl-dot { background: var(--grad-royal); color: #fff; border-color: transparent; }
+    .tl-row.active .tl-dot { background: var(--grad-gold); color: #3a2c05; border-color: transparent; box-shadow: 0 0 0 5px rgba(201,165,78,.2); }
+    .tl-line { position: absolute; left: 19px; top: 32px; bottom: -8px; width: 2px; background: var(--line); }
+    .tl-row.done .tl-line { background: var(--royal-soft); }
+    .tl-body { padding-bottom: 26px; }
+    .tl-body .t { font-weight: 600; font-size: .92rem; }
+    .tl-body .s { font-size: .76rem; color: var(--muted); }
+    .tl-body.upcoming .t { color: var(--muted); }
+
+    /* ============ DASHBOARD ============ */
+    .dash-tabs { display: flex; gap: 8px; margin-bottom: 26px; flex-wrap: wrap; }
+    .dash-tabs button { padding: 10px 18px; border-radius: 30px; font-size: .84rem; font-weight: 600; color: var(--muted); border: 1px solid var(--line); background: var(--card); transition: all .2s; }
+    .dash-tabs button.active { background: var(--grad-royal); color: #fff; border-color: transparent; }
+    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 24px; }
+    .stat {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 20px;
+      box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
+    }
+    .stat .ic { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; font-size: 1.2rem; margin-bottom: 12px; }
+    .stat .val { font-family: var(--font-head); font-size: 1.8rem; font-weight: 700; }
+    .stat .lbl { font-size: .76rem; color: var(--muted); }
+    .stat .trend { font-size: .72rem; font-weight: 600; margin-top: 6px; }
+    .trend.up { color: #2f9e5f; } .trend.down { color: #d1495b; }
+    .ic.b1 { background: var(--blush); } .ic.b2 { background: color-mix(in srgb, var(--royal) 12%, transparent); }
+    .ic.b3 { background: color-mix(in srgb, var(--gold) 20%, transparent); } .ic.b4 { background: #dff0e6; }
+    [data-theme="dark"] .ic.b4 { background: #1e3a2b; }
+
+    .dash-cols { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; }
+    .list-panel { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow-sm); }
+    .list-panel h4 { margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
+    .li { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); }
+    .li:last-child { border-bottom: none; }
+    .li .av { width: 42px; height: 42px; border-radius: 11px; flex: 0 0 auto; }
+    .li .grow { flex: 1; min-width: 0; }
+    .li .t { font-weight: 600; font-size: .86rem; }
+    .li .s { font-size: .74rem; color: var(--muted); }
+    .chip { font-size: .68rem; font-weight: 600; padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
+    .chip.warn { background: #fdf0d5; color: #a6761d; } [data-theme="dark"] .chip.warn { background: #3a2f14; color: var(--gold-bright); }
+    .chip.ok { background: #dff0e6; color: #2f7a4e; } [data-theme="dark"] .chip.ok { background: #17311f; color: #7fd9a3; }
+    .chip.info { background: color-mix(in srgb, var(--royal) 12%, transparent); color: var(--royal-soft); } [data-theme="dark"] .chip.info { background: #1e2450; color: #a9b6ff; }
+    .chip.hot { background: var(--blush); color: #b23a68; }
+
+    .bar-track { height: 7px; border-radius: 6px; background: var(--bg-alt); overflow: hidden; margin-top: 6px; }
+    .bar-fill { height: 100%; border-radius: 6px; background: var(--grad-gold); }
+
+    /* ============ AI FEATURES ============ */
+    .ai-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .ai-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow-sm); transition: all .3s; }
+    .ai-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .ai-card .ic { font-size: 1.7rem; margin-bottom: 12px; display: inline-grid; place-items: center; width: 50px; height: 50px; border-radius: 14px; background: var(--grad-royal); }
+    .ai-card h4 { font-size: 1.05rem; margin-bottom: 5px; }
+    .ai-card p { font-size: .82rem; color: var(--muted); }
+
+    /* ============ REVIEWS ============ */
+    .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .review { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); }
+    .review .stars { font-size: 1rem; margin-bottom: 12px; }
+    .review p { font-size: .9rem; color: var(--ink); font-style: italic; margin-bottom: 16px; }
+    .review .who { display: flex; align-items: center; gap: 11px; }
+    .review .who .av { width: 42px; height: 42px; border-radius: 50%; }
+    .review .who .nm { font-weight: 600; font-size: .86rem; }
+    .review .who .verified { font-size: .7rem; color: #2f9e5f; }
+
+    /* ============ FOOTER ============ */
+    footer { background: var(--royal-deep); color: rgba(255,255,255,.75); padding: 56px 0 26px; margin-top: 20px; }
+    footer .cols { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 34px; }
+    footer h5 { color: #fff; font-family: var(--font-head); font-size: 1rem; margin-bottom: 14px; }
+    footer a { display: block; font-size: .84rem; padding: 5px 0; color: rgba(255,255,255,.68); transition: color .2s; }
+    footer a:hover { color: var(--gold-bright); }
+    footer .brand-name { color: #fff; }
+    footer .fbrand p { font-size: .85rem; margin: 14px 0; max-width: 300px; }
+    .foot-bottom { border-top: 1px solid rgba(255,255,255,.12); margin-top: 36px; padding-top: 20px; display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; font-size: .78rem; }
+    .socials { display: flex; gap: 10px; }
+    .socials a { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; background: rgba(255,255,255,.08); font-size: 1.1rem; }
+    .socials a:hover { background: var(--gold); }
+
+    /* ============ CART DRAWER ============ */
+    .overlay { position: fixed; inset: 0; background: rgba(16,27,71,.5); backdrop-filter: blur(3px); z-index: 90; opacity: 0; pointer-events: none; transition: opacity .3s; }
+    .overlay.show { opacity: 1; pointer-events: auto; }
+    .drawer {
+      position: fixed; top: 0; right: 0; height: 100%; width: min(420px, 92vw); background: var(--bg); z-index: 95;
+      transform: translateX(100%); transition: transform .35s cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column;
+      box-shadow: var(--shadow-lg);
+    }
+    .drawer.show { transform: translateX(0); }
+    .drawer-head { padding: 20px 22px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+    .drawer-head h3 { font-size: 1.2rem; }
+    .drawer-body { flex: 1; overflow-y: auto; padding: 16px 22px; }
+    .cart-item { display: flex; gap: 13px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+    .cart-item .av { width: 66px; height: 84px; border-radius: 12px; flex: 0 0 auto; }
+    .cart-item .grow { flex: 1; min-width: 0; }
+    .qty { display: inline-flex; align-items: center; gap: 12px; margin-top: 8px; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 4px 10px; }
+    .qty button { font-weight: 700; color: var(--royal-soft); width: 20px; }
+    .drawer-foot { padding: 20px 22px; border-top: 1px solid var(--line); background: var(--card); }
+    .drawer-foot .row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: .88rem; }
+    .drawer-foot .row.total { font-weight: 700; font-size: 1.1rem; font-family: var(--font-head); }
+    .empty-state { text-align: center; padding: 50px 20px; color: var(--muted); }
+    .empty-state .em { font-size: 3rem; opacity: .4; }
+
+    /* ============ PRODUCT MODAL ============ */
+    .modal { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity .3s; }
+    .modal.show { opacity: 1; pointer-events: auto; }
+    .modal-card { background: var(--bg); border-radius: var(--radius); width: min(940px, 100%); max-height: 92vh; overflow-y: auto; box-shadow: var(--shadow-lg); display: grid; grid-template-columns: 1fr 1fr; }
+    .modal-media { position: relative; }
+    .modal-media .main { aspect-ratio: 3/4; position: sticky; top: 0; }
+    .modal-media .main .ph { width: 100%; height: 100%; }
+    .modal-zoom { position: absolute; bottom: 14px; left: 14px; background: rgba(0,0,0,.5); color: #fff; font-size: .72rem; padding: 6px 12px; border-radius: 20px; display: flex; gap: 6px; align-items: center; }
+    .modal-thumbs { display: flex; gap: 8px; padding: 12px; }
+    .modal-thumbs .th { width: 52px; height: 66px; border-radius: 9px; cursor: pointer; border: 2px solid transparent; }
+    .modal-thumbs .th.sel { border-color: var(--gold); }
+    .modal-info { padding: 30px; }
+    .modal-close { position: absolute; top: 14px; right: 14px; z-index: 5; width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.9); display: grid; place-items: center; box-shadow: var(--shadow-sm); }
+    .modal-info h2 { font-size: 1.6rem; margin: 8px 0; }
+    .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; margin: 18px 0; }
+    .spec { border-bottom: 1px dashed var(--line); padding-bottom: 7px; }
+    .spec .k { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .spec .v { font-weight: 600; font-size: .88rem; }
+    .size-row { display: flex; gap: 8px; margin: 6px 0 18px; }
+    .size-row .sz { width: 42px; height: 42px; border-radius: 11px; border: 1.5px solid var(--line); display: grid; place-items: center; font-weight: 600; font-size: .82rem; cursor: pointer; }
+    .size-row .sz.sel { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 12%, transparent); }
+    .modal-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+
+    /* ============ TOAST ============ */
+    .toast-wrap { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 120; display: flex; flex-direction: column; gap: 10px; align-items: center; }
+    .toast { background: var(--royal-deep); color: #fff; padding: 13px 22px; border-radius: 30px; font-size: .85rem; font-weight: 500; box-shadow: var(--shadow-lg); display: flex; gap: 10px; align-items: center; animation: toastIn .3s; border: 1px solid rgba(230,200,119,.3); }
+    .toast .em { color: var(--gold-bright); }
+    @keyframes toastIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    /* ============ VIEW SWITCHING & REVEAL ============ */
+    .view { display: none; }
+    .view.active { display: block; animation: fadeUp .5s ease; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* WhatsApp FAB */
+    .fab-wa { position: fixed; bottom: 24px; right: 24px; z-index: 80; width: 58px; height: 58px; border-radius: 50%; background: #25d366; color: #fff; display: grid; place-items: center; font-size: 1.7rem; box-shadow: 0 12px 30px rgba(37,211,102,.45); animation: pulse 2.4s infinite; }
+    @keyframes pulse { 0%{box-shadow:0 12px 30px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,.5)} 70%{box-shadow:0 12px 30px rgba(37,211,102,.45),0 0 0 16px rgba(37,211,102,0)} 100%{box-shadow:0 12px 30px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,0)} }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1024px) {
+      .prod-grid { grid-template-columns: repeat(3,1fr); }
+      .stat-grid { grid-template-columns: repeat(2,1fr); }
+      .tailor-grid, .ai-grid, .review-grid { grid-template-columns: repeat(2,1fr); }
+      .dash-cols { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 860px) {
+      .nav-links, .search { display: none; }
+      .menu-toggle { display: grid; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { height: 360px; }
+      .offer-banner { grid-template-columns: 1fr; }
+      .modal-card { grid-template-columns: 1fr; }
+      .modal-media .main { position: relative; }
+    }
+    @media (max-width: 620px) {
+      .prod-grid { grid-template-columns: repeat(2,1fr); gap: 14px; }
+      .tailor-grid, .ai-grid, .review-grid, .form-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 20px; }
+      section.block { padding: 44px 0; }
+      .offer-banner { padding: 28px; }
+      footer .cols { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Mobile menu */
+    .mobile-menu { position: fixed; inset: 0; z-index: 70; background: var(--bg); transform: translateX(-100%); transition: transform .3s; padding: 22px; display: flex; flex-direction: column; gap: 6px; }
+    .mobile-menu.show { transform: translateX(0); }
+    .mobile-menu button { text-align: left; padding: 14px 16px; border-radius: 12px; font-weight: 600; font-size: 1rem; color: var(--ink); }
+    .mobile-menu button:hover { background: var(--bg-alt); }
+  </style>
+</head>
+<body>
+
+  <div class="announce">✦ Festival Season Sale — Up to <b>40% OFF</b> on Kanjivaram & Designer Blouses · Free doorstep measurement in select cities ✦</div>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner">
+      <button class="icon-btn menu-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+      <div class="brand" onclick="go('home')" style="cursor:pointer">
+        <div class="brand-mark">T</div>
+        <div>
+          <div class="brand-name">Thulya<span>.</span></div>
+          <div class="brand-tag">Tailor Made For You</div>
+        </div>
+      </div>
+      <nav class="nav-links" id="navLinks">
+        <button data-nav="home" class="active" onclick="go('home')">Home</button>
+        <button data-nav="shop" onclick="go('shop')">Shop</button>
+        <button data-nav="tailoring" onclick="go('tailoring')">Tailoring</button>
+        <button data-nav="booking" onclick="go('booking')">Book Measurement</button>
+        <button data-nav="track" onclick="go('track')">Track Order</button>
+        <button data-nav="account" onclick="go('account')">Dashboards</button>
+      </nav>
+      <div class="search">
+        <span>🔍</span>
+        <input type="text" placeholder="Search sarees, blouses, aari…" oninput="searchProducts(this.value)" />
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" onclick="toggleTheme()" aria-label="Theme" id="themeBtn">🌙</button>
+        <button class="icon-btn" onclick="go('account')" aria-label="Wishlist">♡<span class="badge" id="wishBadge" style="display:none">0</span></button>
+        <button class="icon-btn" onclick="openCart()" aria-label="Cart">🛍️<span class="badge gold" id="cartBadge" style="display:none">0</span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button onclick="go('home');toggleMenu()">Home</button>
+    <button onclick="go('shop');toggleMenu()">Shop</button>
+    <button onclick="go('tailoring');toggleMenu()">Tailoring Services</button>
+    <button onclick="go('booking');toggleMenu()">Book Measurement</button>
+    <button onclick="go('track');toggleMenu()">Track Order</button>
+    <button onclick="go('account');toggleMenu()">Dashboards</button>
+  </div>
+
+  <main id="app"></main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="cols">
+        <div class="fbrand">
+          <div class="brand" style="margin-bottom:4px">
+            <div class="brand-mark">T</div>
+            <div class="brand-name">Thulya<span>.</span></div>
+          </div>
+          <p>A premium designer boutique for handpicked sarees, bespoke blouses, aari artistry and tailoring made to your measurements.</p>
+          <div class="socials">
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="WhatsApp">💬</a>
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="YouTube">▶️</a>
+          </div>
+        </div>
+        <div>
+          <h5>Shop</h5>
+          <a onclick="go('shop')">Sarees</a><a onclick="go('shop')">Designer Blouses</a>
+          <a onclick="go('shop')">Aari Work</a><a onclick="go('shop')">Lehengas</a><a onclick="go('shop')">Kids Wear</a>
+        </div>
+        <div>
+          <h5>Services</h5>
+          <a onclick="go('tailoring')">Tailoring</a><a onclick="go('booking')">Measurement</a>
+          <a onclick="go('track')">Order Tracking</a><a href="#">WhatsApp Support</a>
+        </div>
+        <div>
+          <h5>Company</h5>
+          <a href="#">About Thulya</a><a href="#">Loyalty Program</a>
+          <a href="#">Store Locator</a><a href="#">Contact</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Thulya — Tailor Made For You. Crafted with ♥ &amp; gold thread.</span>
+        <span>UPI · GPay · PhonePe · Razorpay · COD</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="fab-wa" href="#" onclick="waChat('Hi Thulya! I would like to know more about your collection.');return false;" aria-label="WhatsApp">💬</a>
+
+  <!-- CART DRAWER -->
+  <div class="overlay" id="overlay" onclick="closeAll()"></div>
+  <aside class="drawer" id="cartDrawer">
+    <div class="drawer-head">
+      <h3>Your Bag 🛍️</h3>
+      <button class="icon-btn" onclick="closeAll()">✕</button>
+    </div>
+    <div class="drawer-body" id="cartBody"></div>
+    <div class="drawer-foot" id="cartFoot"></div>
+  </aside>
+
+  <!-- PRODUCT MODAL -->
+  <div class="modal" id="prodModal"></div>
+
+  <div class="toast-wrap" id="toastWrap"></div>
+
+  <script>
+  /* ============================================================
+     THULYA — Premium Boutique Prototype
+     Single-file interactive demo. Data-driven views, cart,
+     wishlist, product detail, tailoring, booking, tracking,
+     and role dashboards. State persists in localStorage.
+     ============================================================ */
+
+  const WA_NUMBER = '910000000000'; // demo WhatsApp Business number
+
+  const gradients = ['g1','g2','g3','g4','g5','g6','g7','g8'];
+
+  // ---- Product catalogue (sample data) ----
+  const PRODUCTS = [
+    { id:'p1', name:'Kanjivaram Royal Silk', cat:'Sarees', sub:'Kanjivaram', g:'g1', em:'🥻', price:8499, mrp:12999, rating:4.9, reviews:214, tag:'new', fabric:'Pure Mulberry Silk', wash:'Dry clean only', sizes:['5.5m'], sku:'THU-KJV-001', delivery:'3–5 days', stock:12, badge:'New', trending:true, featured:true, desc:'Handwoven Kanjivaram with contrast zari border and temple pallu — a wedding heirloom.' },
+    { id:'p2', name:'Blush Organza Weave', cat:'Sarees', sub:'Organza', g:'g2', em:'🥻', price:4299, mrp:6499, rating:4.7, reviews:98, tag:'sale', fabric:'Organza Silk', wash:'Dry clean', sizes:['5.5m'], sku:'THU-ORG-014', delivery:'2–4 days', stock:7, trending:true, featured:true, desc:'Feather-light organza with hand-painted floral motifs and a shimmer gold edge.' },
+    { id:'p3', name:'Peacock Aari Blouse', cat:'Designer Blouses', sub:'Aari Work', g:'g3', em:'👚', price:2750, mrp:3900, rating:5.0, reviews:156, tag:'', fabric:'Raw Silk', wash:'Hand wash gentle', sizes:['S','M','L','XL'], sku:'THU-ABL-032', delivery:'5–7 days', stock:5, featured:true, desc:'Intricate peacock aari embroidery with mirror and bead detailing on the yoke.' },
+    { id:'p4', name:'Modal Silk Everyday', cat:'Sarees', sub:'Modal Silk', g:'g4', em:'🥻', price:1899, mrp:2499, rating:4.6, reviews:73, tag:'', fabric:'Modal Silk', wash:'Machine wash cold', sizes:['5.5m'], sku:'THU-MOD-008', delivery:'2–3 days', stock:20, trending:true, desc:'Buttery-soft modal silk with a subtle sheen — the perfect daily drape.' },
+    { id:'p5', name:'Ajrak Cotton Classic', cat:'Sarees', sub:'Ajrak', g:'g5', em:'🥻', price:2299, mrp:2999, rating:4.8, reviews:64, tag:'', fabric:'Handblock Cotton', wash:'Hand wash separately', sizes:['5.5m'], sku:'THU-AJK-021', delivery:'3–5 days', stock:15, desc:'Authentic Ajrak block prints in indigo and madder, naturally dyed.' },
+    { id:'p6', name:'Bridal Velvet Lehenga', cat:'Lehengas', sub:'Bridal', g:'g7', em:'👗', price:18999, mrp:26999, rating:4.9, reviews:41, tag:'new', fabric:'Velvet + Net', wash:'Dry clean only', sizes:['S','M','L','XL'], sku:'THU-LEH-003', delivery:'10–14 days', stock:3, featured:true, desc:'Regal velvet lehenga with zardozi and sequin work — the bridal showstopper.' },
+    { id:'p7', name:'Princess-Cut Silk Blouse', cat:'Designer Blouses', sub:'Silk', g:'g6', em:'👚', price:1650, mrp:2200, rating:4.7, reviews:120, tag:'sale', fabric:'Art Silk', wash:'Hand wash', sizes:['XS','S','M','L','XL'], sku:'THU-PBL-011', delivery:'4–6 days', stock:9, trending:true, desc:'Tailored princess-cut with piping detail for a flawless silhouette.' },
+    { id:'p8', name:'Tissue Silk Shimmer', cat:'Sarees', sub:'Tissue Silk', g:'g8', em:'🥻', price:5499, mrp:7999, rating:4.8, reviews:52, tag:'', fabric:'Tissue Silk', wash:'Dry clean', sizes:['5.5m'], sku:'THU-TIS-006', delivery:'3–5 days', stock:6, featured:true, desc:'Liquid-gold tissue silk that catches the light with every fold.' },
+    { id:'p9', name:'Ready-to-Wear Kurti', cat:'Readymade Kurtis', sub:'Cotton', g:'g4', em:'👗', price:899, mrp:1299, rating:4.5, reviews:210, tag:'', fabric:'Cotton Blend', wash:'Machine wash', sizes:['S','M','L','XL','XXL'], sku:'THU-KUR-045', delivery:'1–2 days', stock:40, trending:true, desc:'Breezy A-line kurti with block-print detailing — office to evening.' },
+    { id:'p10', name:'Kids Festive Frock', cat:'Kids Wear', sub:'Party', g:'g2', em:'🧒', price:1199, mrp:1699, rating:4.9, reviews:88, tag:'new', fabric:'Cotton Silk', wash:'Hand wash', sizes:['2-3y','4-5y','6-7y','8-9y'], sku:'THU-KID-017', delivery:'2–4 days', stock:18, desc:'Twirl-worthy festive frock with net overlay and bow detailing.' },
+    { id:'p11', name:'Linen Handloom Saree', cat:'Sarees', sub:'Linen', g:'g5', em:'🥻', price:2799, mrp:3499, rating:4.6, reviews:47, tag:'', fabric:'Pure Linen', wash:'Dry clean first wash', sizes:['5.5m'], sku:'THU-LIN-029', delivery:'3–5 days', stock:11, desc:'Crisp handloom linen with contrast temple border — effortless elegance.' },
+    { id:'p12', name:'Anarkali Dress Material', cat:'Dress Materials', sub:'Unstitched', g:'g6', em:'🧵', price:1499, mrp:2099, rating:4.7, reviews:61, tag:'sale', fabric:'Georgette', wash:'Hand wash', sizes:['Unstitched'], sku:'THU-DM-052', delivery:'2–3 days', stock:22, desc:'3-piece Anarkali material with embroidered yoke — stitch to your fit.' },
+  ];
+
+  const CATEGORIES = [
+    { name:'Sarees', em:'🥻' }, { name:'Designer Blouses', em:'👚' }, { name:'Aari Work', em:'🪡' },
+    { name:'Lehengas', em:'👗' }, { name:'Dress Materials', em:'🧵' }, { name:'Readymade Kurtis', em:'👘' },
+    { name:'Kids Wear', em:'🧒' }, { name:'Accessories', em:'💍' },
+  ];
+
+  const HOME_SECTIONS = [
+    { title:'New Arrivals', key:'new', filter:p=>p.tag==='new' },
+    { title:'Trending Sarees', key:'trend', filter:p=>p.trending && p.cat==='Sarees' },
+    { title:'Designer Blouses', key:'blouse', filter:p=>p.cat==='Designer Blouses' },
+    { title:'Featured Products', key:'feat', filter:p=>p.featured },
+  ];
+
+  const TAILORING = [
+    { name:'Blouse Stitching', em:'👚', desc:'Perfectly fitted blouses stitched to your exact measurements.', items:[
+      ['Normal Blouse',350],['Dart Blouse',650],['Princess Cut',750],['Designer Blouse (from)',750] ] },
+    { name:'Salwar & Anarkali', em:'👗', desc:'Salwar suits and flowing Anarkalis, tailored to flatter.', items:[
+      ['Salwar Suit',900],['Anarkali (from)',1400],['Patiala Set',1100] ] },
+    { name:'Lehenga & Gown', em:'💃', desc:'Statement lehengas and gowns for your big occasions.', items:[
+      ['Lehenga (from)',2500],['Gown (from)',1800],['Skirt Fall & Pico',120] ] },
+    { name:'Embroidery & Aari', em:'🪡', desc:'Hand embroidery, aari and zardozi artistry.', items:[
+      ['Aari Work (from)',1200],['Zardozi (from)',1800],['Mirror Work (from)',900] ] },
+    { name:'Kids Dress', em:'🧒', desc:'Adorable custom outfits for little ones.', items:[
+      ['Kids Frock',600],['Kids Lehenga',900],['Kids Salwar',550] ] },
+    { name:'Alteration & Add-ons', em:'✂️', desc:'Quick alterations and finishing touches.', items:[
+      ['Alteration',50],['Blouse Attachment',50],['Fall & Edging',80],['Hooks & Piping',60] ] },
+  ];
+
+  const ORDER_STAGES = [
+    { t:'Order Received', s:'12 Jul, 10:24 AM' },
+    { t:'Measurement Completed', s:'13 Jul, 4:10 PM' },
+    { t:'Cutting', s:'14 Jul, 11:00 AM' },
+    { t:'Stitching', s:'In progress · Priya (Master)' },
+    { t:'Embroidery', s:'Pending' },
+    { t:'Quality Check', s:'Pending' },
+    { t:'Ready', s:'Pending' },
+    { t:'Dispatched', s:'Pending' },
+    { t:'Delivered', s:'Pending' },
+  ];
+  const ORDER_CURRENT = 3; // index of active stage
+
+  const AI_FEATURES = [
+    { ic:'✨', t:'AI Dress Recommendation', d:'Personalised picks based on your taste, past orders & body type.' },
+    { ic:'🎨', t:'AI Color Combination', d:'Suggests blouse & accessory colours that pair with your saree.' },
+    { ic:'🥻', t:'AI Matching Blouse', d:'Finds the ideal blouse design for any saree you upload.' },
+    { ic:'📅', t:'AI Occasion Stylist', d:'Curates looks for weddings, festivals & everyday wear.' },
+    { ic:'📏', t:'AI Size Prediction', d:'Predicts your perfect fit from a few simple inputs.' },
+    { ic:'💬', t:'FAQ Chatbot', d:'Instant answers on delivery, care, tailoring & returns.' },
+  ];
+
+  const REVIEWS = [
+    { stars:'★★★★★', text:'The Kanjivaram exceeded every expectation — the zari work is stunning. Doorstep measurement made it effortless.', name:'Divya Ramesh', g:'g2' },
+    { stars:'★★★★★', text:'My aari blouse fits like a dream. Thulya truly is tailor made for you!', name:'Kavya Nair', g:'g3' },
+    { stars:'★★★★★', text:'Ordered a bridal lehenga and tracked every stage on the app. Delivered right on time.', name:'Sneha Iyer', g:'g6' },
+  ];
+
+  // ---- State ----
+  let state = {
+    cart: JSON.parse(localStorage.getItem('thulya_cart') || '[]'),
+    wishlist: JSON.parse(localStorage.getItem('thulya_wish') || '[]'),
+    theme: localStorage.getItem('thulya_theme') || 'light',
+    search: '', shopCat: 'All',
+    booking: { type:'Doorstep Measurement' },
+    dashRole: 'customer',
+  };
+
+  const fmt = n => '₹' + n.toLocaleString('en-IN');
+  const save = () => {
+    localStorage.setItem('thulya_cart', JSON.stringify(state.cart));
+    localStorage.setItem('thulya_wish', JSON.stringify(state.wishlist));
+  };
+  const byId = id => PRODUCTS.find(p => p.id === id);
+
+  function phEl(g, em, label, cls='') {
+    return `<div class="ph ${g} ${cls}"><span class="ph-em">${em}</span><span class="ph-label">${label}</span></div>`;
+  }
+
+  // ---- Toast ----
+  function toast(msg, em='✦') {
+    const w = document.getElementById('toastWrap');
+    const t = document.createElement('div');
+    t.className = 'toast';
+    t.innerHTML = `<span class="em">${em}</span>${msg}`;
+    w.appendChild(t);
+    setTimeout(() => { t.style.opacity = '0'; t.style.transform='translateY(10px)'; t.style.transition='all .3s'; }, 2400);
+    setTimeout(() => t.remove(), 2800);
+  }
+
+  // ---- Cart & Wishlist ----
+  function addToCart(id, size, qty=1) {
+    const p = byId(id); if (!p) return;
+    const existing = state.cart.find(c => c.id === id && c.size === size);
+    if (existing) existing.qty += qty;
+    else state.cart.push({ id, size: size || p.sizes[0], qty });
+    save(); renderBadges(); renderCart();
+    toast(`${p.name} added to bag`, '🛍️');
+  }
+  function changeQty(idx, d) {
+    state.cart[idx].qty += d;
+    if (state.cart[idx].qty <= 0) state.cart.splice(idx, 1);
+    save(); renderBadges(); renderCart();
+  }
+  function toggleWish(id, ev) {
+    if (ev) ev.stopPropagation();
+    const i = state.wishlist.indexOf(id);
+    if (i > -1) { state.wishlist.splice(i, 1); toast('Removed from wishlist', '♡'); }
+    else { state.wishlist.push(id); toast('Saved to wishlist', '💖'); }
+    save(); renderBadges();
+    document.querySelectorAll(`[data-wish="${id}"]`).forEach(b => b.classList.toggle('on', state.wishlist.includes(id)));
+    if (document.querySelector('.view.active')?.id === 'view-account') renderAccount();
+  }
+  function renderBadges() {
+    const cc = state.cart.reduce((s,c)=>s+c.qty,0);
+    const cb = document.getElementById('cartBadge');
+    cb.textContent = cc; cb.style.display = cc ? 'grid' : 'none';
+    const wb = document.getElementById('wishBadge');
+    wb.textContent = state.wishlist.length; wb.style.display = state.wishlist.length ? 'grid' : 'none';
+  }
+
+  function openCart() { document.getElementById('cartDrawer').classList.add('show'); document.getElementById('overlay').classList.add('show'); renderCart(); }
+  function closeAll() {
+    document.getElementById('cartDrawer').classList.remove('show');
+    document.getElementById('overlay').classList.remove('show');
+    document.getElementById('prodModal').classList.remove('show');
+  }
+  function renderCart() {
+    const body = document.getElementById('cartBody');
+    const foot = document.getElementById('cartFoot');
+    if (!state.cart.length) {
+      body.innerHTML = `<div class="empty-state"><div class="em">🛍️</div><p>Your bag is empty.<br>Discover something beautiful.</p><button class="btn btn-gold btn-sm" style="margin-top:16px" onclick="closeAll();go('shop')">Start Shopping</button></div>`;
+      foot.innerHTML = ''; return;
+    }
+    body.innerHTML = state.cart.map((c, i) => {
+      const p = byId(c.id);
+      return `<div class="cart-item">
+        ${phEl(p.g, p.em, p.name)}
+        <div class="grow">
+          <div class="t" style="font-weight:600;font-size:.88rem">${p.name}</div>
+          <div class="s" style="font-size:.74rem;color:var(--muted)">Size: ${c.size}</div>
+          <div class="qty"><button onclick="changeQty(${i},-1)">−</button><span>${c.qty}</span><button onclick="changeQty(${i},1)">+</button></div>
+        </div>
+        <div style="text-align:right"><div class="price" style="font-size:1rem">${fmt(p.price*c.qty)}</div>
+        <button onclick="changeQty(${i},-99)" style="font-size:.72rem;color:var(--muted);margin-top:6px">Remove</button></div>
+      </div>`;
+    }).join('');
+    const sub = state.cart.reduce((s,c)=>s+byId(c.id).price*c.qty,0);
+    const gst = Math.round(sub*0.05);
+    foot.innerHTML = `
+      <div class="row"><span>Subtotal</span><span>${fmt(sub)}</span></div>
+      <div class="row"><span>GST (5%)</span><span>${fmt(gst)}</span></div>
+      <div class="row"><span>Delivery</span><span style="color:#2f9e5f">FREE</span></div>
+      <div class="row total"><span>Total</span><span>${fmt(sub+gst)}</span></div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:12px" onclick="checkout()">Checkout · ${fmt(sub+gst)}</button>
+      <button class="btn btn-wa btn-sm" style="width:100%;justify-content:center;margin-top:8px" onclick="waChat('I want to order the items in my Thulya bag.')">💬 Order via WhatsApp</button>`;
+  }
+  function checkout() {
+    toast('Redirecting to secure Razorpay checkout…', '🔒');
+    setTimeout(()=>toast('Payment gateway (UPI · GPay · PhonePe · Cards · COD)', '💳'), 900);
+  }
+
+  // ---- WhatsApp ----
+  function waChat(msg) {
+    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+  }
+  function shareProduct(id) {
+    const p = byId(id);
+    waChat(`Check out this beauty from Thulya — ${p.name} (${p.sku}) at ${fmt(p.price)} ✨`);
+  }
+
+  // ---- Product Modal ----
+  function openProduct(id) {
+    const p = byId(id);
+    const off = Math.round((1 - p.price/p.mrp) * 100);
+    const thumbs = [p.g, gradients[(gradients.indexOf(p.g)+2)%8], gradients[(gradients.indexOf(p.g)+4)%8]];
+    const related = PRODUCTS.filter(x => x.cat===p.cat && x.id!==p.id).slice(0,3);
+    const m = document.getElementById('prodModal');
+    m.innerHTML = `
+      <div class="modal-card">
+        <div class="modal-media">
+          <button class="modal-close" onclick="closeAll()">✕</button>
+          <div class="main" id="modalMain">${phEl(p.g, p.em, p.name)}<div class="modal-zoom">🔍 Hover to zoom · 🎬 Video</div></div>
+          <div class="modal-thumbs">
+            ${thumbs.map((g,i)=>`<div class="th ${g==p.g?'sel':''}" onclick="swapMain('${g}','${p.em}','${p.name.replace(/'/g,'')}',this)">${phEl(g,p.em,'')}</div>`).join('')}
+          </div>
+        </div>
+        <div class="modal-info">
+          <div class="card-cat">${p.cat} · ${p.sub}</div>
+          <h2>${p.name}</h2>
+          <div class="card-rate"><span class="stars">★★★★★</span> ${p.rating} · ${p.reviews} reviews</div>
+          <div class="price-row" style="margin:12px 0">
+            <span class="price" style="font-size:1.5rem">${fmt(p.price)}</span>
+            <span class="price-old">${fmt(p.mrp)}</span>
+            <span class="price-off">${off}% OFF</span>
+          </div>
+          <p style="font-size:.88rem;color:var(--muted)">${p.desc}</p>
+          <div class="spec-grid">
+            <div class="spec"><div class="k">Fabric</div><div class="v">${p.fabric}</div></div>
+            <div class="spec"><div class="k">Wash Care</div><div class="v">${p.wash}</div></div>
+            <div class="spec"><div class="k">SKU</div><div class="v">${p.sku}</div></div>
+            <div class="spec"><div class="k">Delivery</div><div class="v">${p.delivery}</div></div>
+            <div class="spec"><div class="k">Stock</div><div class="v">${p.stock>5?'In stock':'Only '+p.stock+' left!'}</div></div>
+            <div class="spec"><div class="k">Offer Price</div><div class="v" style="color:var(--gold)">${fmt(p.price)}</div></div>
+          </div>
+          <div style="font-size:.78rem;font-weight:600;margin-bottom:6px">Select Size</div>
+          <div class="size-row">${p.sizes.map((s,i)=>`<div class="sz ${i===0?'sel':''}" onclick="selSize(this)">${s}</div>`).join('')}</div>
+          <div class="modal-actions">
+            <button class="btn btn-primary" onclick="addToCart('${p.id}', getSelSize())">🛍️ Add to Cart</button>
+            <button class="btn btn-gold" onclick="addToCart('${p.id}', getSelSize());closeAll();openCart()">⚡ Buy Now</button>
+            <button class="btn btn-ghost btn-sm" data-wish="${p.id}" onclick="toggleWish('${p.id}',event)">♡ Wishlist</button>
+            <button class="btn btn-wa btn-sm" onclick="shareProduct('${p.id}')">💬 Share</button>
+          </div>
+          <div style="margin-top:22px">
+            <div style="font-family:var(--font-head);font-weight:600;margin-bottom:10px">You may also love</div>
+            <div style="display:flex;gap:10px">
+              ${related.map(r=>`<div style="flex:1;cursor:pointer" onclick="openProduct('${r.id}')">
+                <div style="aspect-ratio:3/4;border-radius:12px;overflow:hidden">${phEl(r.g,r.em,'')}</div>
+                <div style="font-size:.74rem;font-weight:600;margin-top:6px">${r.name}</div>
+                <div style="font-size:.76rem;color:var(--gold)">${fmt(r.price)}</div>
+              </div>`).join('')}
+            </div>
+          </div>
+        </div>
+      </div>`;
+    m.classList.add('show');
+    document.getElementById('overlay').classList.add('show');
+    document.querySelector('[data-wish="'+p.id+'"]')?.classList.toggle('on', state.wishlist.includes(p.id));
+  }
+  function swapMain(g, em, name, el) {
+    document.getElementById('modalMain').innerHTML = phEl(g, em, name) + '<div class="modal-zoom">🔍 Hover to zoom · 🎬 Video</div>';
+    el.parentNode.querySelectorAll('.th').forEach(t=>t.classList.remove('sel')); el.classList.add('sel');
+  }
+  function selSize(el) { el.parentNode.querySelectorAll('.sz').forEach(s=>s.classList.remove('sel')); el.classList.add('sel'); }
+  function getSelSize() { return document.querySelector('.size-row .sz.sel')?.textContent || ''; }
+
+  // ---- Product card ----
+  function productCard(p) {
+    const off = Math.round((1 - p.price/p.mrp) * 100);
+    const tagHtml = p.tag==='new' ? '<span class="card-tag new">New</span>' : p.tag==='sale' ? `<span class="card-tag sale">${off}% Off</span>` : (off>=30?`<span class="card-tag">${off}% Off</span>`:'');
+    return `<div class="card">
+      <div class="card-media" onclick="openProduct('${p.id}')">
+        ${tagHtml}
+        <button class="card-wish ${state.wishlist.includes(p.id)?'on':''}" data-wish="${p.id}" onclick="toggleWish('${p.id}',event)">♡</button>
+        ${phEl(p.g, p.em, p.name)}
+      </div>
+      <div class="card-body">
+        <div class="card-cat">${p.sub||p.cat}</div>
+        <div class="card-name">${p.name}</div>
+        <div class="card-rate"><span class="stars">★★★★★</span> ${p.rating} <span style="opacity:.6">(${p.reviews})</span></div>
+        <div class="price-row"><span class="price">${fmt(p.price)}</span><span class="price-old">${fmt(p.mrp)}</span><span class="price-off">${off}% off</span></div>
+        <button class="card-add" onclick="addToCart('${p.id}','${p.sizes[0]}')">Add to Bag</button>
+      </div>
+    </div>`;
+  }
+
+  // ============ VIEWS ============
+  function view_home() {
+    return `
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <div class="hero-badge"><span class="dot"></span> Handcrafted · Tailor Made · Since 2016</div>
+            <h1>Drape yourself in <em>timeless</em> luxury.</h1>
+            <p>Handpicked sarees, bespoke blouses and aari artistry — stitched to your measurements and delivered to your door.</p>
+            <div class="hero-cta">
+              <button class="btn btn-primary" onclick="go('shop')">Explore Collection →</button>
+              <button class="btn btn-gold" onclick="go('booking')">📏 Book Measurement</button>
+            </div>
+            <div class="hero-stats">
+              <div><div class="num">12K+</div><div class="lbl">Happy Customers</div></div>
+              <div><div class="num">850+</div><div class="lbl">Designs Crafted</div></div>
+              <div><div class="num">4.9★</div><div class="lbl">Avg. Rating</div></div>
+            </div>
+          </div>
+          <div class="hero-visual reveal">
+            <div class="hero-card hc1">${phEl('g1','🥻','Kanjivaram Silk')}</div>
+            <div class="hero-card hc2">${phEl('g2','👚','Designer Blouse')}</div>
+            <div class="hero-card hc3">${phEl('g5','🪡','Aari Work')}</div>
+            <div class="hero-float hf-tl"><span class="em">✨</span><div><div class="t">Festival Sale</div><div class="s">Up to 40% off</div></div></div>
+            <div class="hero-float hf-br"><span class="em">🚚</span><div><div class="t">Free Doorstep</div><div class="s">Measurement</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:20px"><div class="wrap reveal">
+      <div class="cat-strip">
+        ${CATEGORIES.map(c=>`<div class="cat-pill" onclick="go('shop');setTimeout(()=>filterShop('${c.name}'),50)"><div class="circle">${c.em}</div><div class="nm">${c.name}</div></div>`).join('')}
+      </div>
+    </div></section>
+
+    ${HOME_SECTIONS.map(sec=>`
+    <section class="block" style="padding:34px 0"><div class="wrap reveal">
+      <div class="section-head">
+        <div><div class="eyebrow">Curated</div><h2 class="section-title">${sec.title}</h2><div class="gold-line"></div></div>
+        <a class="link-more" onclick="go('shop')">View all →</a>
+      </div>
+      <div class="prod-grid">${PRODUCTS.filter(sec.filter).slice(0,4).map(productCard).join('')}</div>
+    </div></section>`).join('')}
+
+    <section class="block"><div class="wrap reveal">
+      <div class="offer-banner">
+        <div>
+          <div class="eyebrow" style="color:var(--gold-bright)">Limited Time</div>
+          <h2>Festival Collection is <em>here</em>.</h2>
+          <p>Celebrate Navratri, Diwali &amp; the wedding season in Thulya couture. Extra 10% off on your first order.</p>
+          <div class="coupon">🎁 Use code <b>THULYA10</b> · Ends soon</div>
+        </div>
+        <button class="btn btn-gold" onclick="go('shop')">Shop the Sale →</button>
+      </div>
+    </div></section>
+
+    <section class="block"><div class="wrap reveal">
+      <div class="section-head"><div><div class="eyebrow">Bespoke</div><h2 class="section-title">Tailoring Services</h2><div class="gold-line"></div></div>
+      <a class="link-more" onclick="go('tailoring')">All services →</a></div>
+      <div class="tailor-grid">${TAILORING.slice(0,3).map(tailorCard).join('')}</div>
+    </div></section>
+
+    <section class="block" style="background:var(--bg-alt)"><div class="wrap reveal">
+      <div class="section-head"><div><div class="eyebrow">Intelligent</div><h2 class="section-title">AI Styling, Built In</h2><div class="gold-line"></div></div></div>
+      <div class="ai-grid">${AI_FEATURES.map(f=>`<div class="ai-card"><div class="ic">${f.ic}</div><h4>${f.t}</h4><p>${f.d}</p></div>`).join('')}</div>
+    </div></section>
+
+    <section class="block"><div class="wrap reveal">
+      <div class="section-head"><div><div class="eyebrow">Loved by 12,000+</div><h2 class="section-title">Customer Reviews</h2><div class="gold-line"></div></div></div>
+      <div class="review-grid">${REVIEWS.map(r=>`<div class="review"><div class="stars">${r.stars}</div><p>“${r.text}”</p><div class="who">${phEl(r.g,'','','av')}<div><div class="nm">${r.name}</div><div class="verified">✓ Verified Buyer</div></div></div></div>`).join('')}</div>
+    </div></section>
+
+    ${loyaltyStrip()}
+    `;
+  }
+
+  function loyaltyStrip() {
+    return `<section class="block" style="padding-top:0"><div class="wrap reveal">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+        ${[['🥈','Silver','Earn 1 pt / ₹100 · Birthday coupon'],['🥇','Gold','2x points · Early sale access · Free fall & pico'],['💎','Platinum','3x points · Priority tailoring · Personal stylist']].map(([e,n,d])=>`
+        <div class="tailor-card" style="text-align:center"><div style="font-size:2.2rem">${e}</div><h4>${n} Member</h4><div class="desc" style="min-height:auto">${d}</div></div>`).join('')}
+      </div>
+    </div></section>`;
+  }
+
+  function tailorCard(t) {
+    return `<div class="tailor-card">
+      <div class="ic">${t.em}</div>
+      <h4>${t.name}</h4>
+      <div class="desc">${t.desc}</div>
+      <div class="price-list">
+        ${t.items.map(([n,p])=>`<div class="pl-row"><span>${n}</span><span class="pl-price">${fmt(p)}</span></div>`).join('')}
+      </div>
+      <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center;margin-top:14px" onclick="go('booking')">Book Now</button>
+    </div>`;
+  }
+
+  function view_shop() {
+    const cats = ['All', ...CATEGORIES.map(c=>c.name)];
+    let list = PRODUCTS;
+    if (state.shopCat !== 'All') list = list.filter(p=>p.cat===state.shopCat);
+    if (state.search) list = list.filter(p=>(p.name+p.cat+p.sub).toLowerCase().includes(state.search.toLowerCase()));
+    return `
+    <section class="block"><div class="wrap">
+      <div class="section-head reveal"><div><div class="eyebrow">The Collection</div><h2 class="section-title">Shop Thulya</h2><div class="gold-line"></div></div>
+      <span style="font-size:.82rem;color:var(--muted)">${list.length} products</span></div>
+      <div class="dash-tabs reveal" style="margin-bottom:22px">
+        ${cats.map(c=>`<button class="${state.shopCat===c?'active':''}" onclick="filterShop('${c}')">${c}</button>`).join('')}
+      </div>
+      <div class="prod-grid wide reveal" id="shopGrid">
+        ${list.length ? list.map(productCard).join('') : '<div class="empty-state" style="grid-column:1/-1"><div class="em">🔍</div><p>No products match your search.</p></div>'}
+      </div>
+    </div></section>`;
+  }
+  function filterShop(cat) { state.shopCat = cat; state.search=''; renderView('shop'); }
+  function searchProducts(v) {
+    state.search = v;
+    if (document.querySelector('.view.active')?.id === 'view-shop') {
+      const grid = document.getElementById('shopGrid');
+      let list = PRODUCTS.filter(p=>(p.name+p.cat+p.sub).toLowerCase().includes(v.toLowerCase()));
+      if (state.shopCat!=='All') list = list.filter(p=>p.cat===state.shopCat);
+      if (grid) grid.innerHTML = list.length ? list.map(productCard).join('') : '<div class="empty-state" style="grid-column:1/-1"><div class="em">🔍</div><p>No matches.</p></div>';
+    } else if (v.length > 1) { go('shop'); }
+  }
+
+  function view_tailoring() {
+    return `
+    <section class="block"><div class="wrap">
+      <div class="section-head reveal"><div><div class="eyebrow">Bespoke Atelier</div><h2 class="section-title">Tailoring Services</h2><div class="gold-line"></div></div></div>
+      <p class="reveal" style="color:var(--muted);max-width:560px;margin-bottom:28px">Every stitch, tailored to you. Transparent pricing, master craftsmanship. <b style="color:var(--gold)">Prices are Admin-editable</b> — double-click any price to see.</p>
+      <div class="tailor-grid reveal">${TAILORING.map(tailorCard).join('')}</div>
+    </div></section>`;
+  }
+
+  function view_booking() {
+    const b = state.booking;
+    const modes = [['🏠','Doorstep Measurement','We come to you'],['🏬','Boutique Visit','Visit our store'],['🎥','Video Measurement','On a video call']];
+    return `
+    <section class="block"><div class="wrap">
+      <div class="section-head reveal"><div><div class="eyebrow">Appointments</div><h2 class="section-title">Book a Measurement</h2><div class="gold-line"></div></div></div>
+      <div style="display:grid;grid-template-columns:1.3fr .9fr;gap:24px" class="reveal">
+        <div class="panel" style="padding:26px">
+          <div style="font-weight:600;font-size:.9rem;margin-bottom:12px">1 · Choose how you'd like to be measured</div>
+          <div class="seg" style="margin-bottom:22px">
+            ${modes.map(([e,t,s])=>`<div class="opt ${b.type===t?'sel':''}" onclick="setBookType('${t}')"><div class="em">${e}</div><div class="t">${t}</div><div class="s">${s}</div></div>`).join('')}
+          </div>
+          <div style="font-weight:600;font-size:.9rem;margin-bottom:12px">2 · Your details</div>
+          <div class="form-grid">
+            <div class="field"><label>Full Name</label><input placeholder="Your name" /></div>
+            <div class="field"><label>Phone</label><input placeholder="+91 ·····" /></div>
+            <div class="field full"><label>Address</label><input placeholder="Where should we visit?" /></div>
+            <div class="field"><label>Preferred Date</label><input type="date" /></div>
+            <div class="field"><label>Preferred Time</label>
+              <select><option>10:00 – 11:00 AM</option><option>11:00 – 12:00 PM</option><option>3:00 – 4:00 PM</option><option>5:00 – 6:00 PM</option></select></div>
+            <div class="field"><label>Dress Type</label>
+              <select><option>Blouse</option><option>Salwar / Anarkali</option><option>Lehenga</option><option>Gown</option><option>Kids Dress</option></select></div>
+            <div class="field"><label>Service</label>
+              <select><option>Stitching</option><option>Alteration</option><option>Embroidery / Aari</option></select></div>
+            <div class="field full"><label>Notes</label><textarea rows="2" placeholder="Any preferences, design references, deadlines…"></textarea></div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
+            <button class="btn btn-primary" onclick="confirmBooking()">Confirm Booking</button>
+            <button class="btn btn-wa btn-sm" onclick="waChat('I want to book a ${b.type} appointment with Thulya.')">💬 Book on WhatsApp</button>
+          </div>
+        </div>
+        <div>
+          <div class="panel" style="padding:22px;margin-bottom:16px">
+            <div style="font-weight:600;margin-bottom:12px">📅 Available Slots · This Week</div>
+            ${calendarWidget()}
+          </div>
+          <div class="panel" style="padding:22px">
+            <div style="font-weight:600;margin-bottom:10px">What to expect</div>
+            ${['✅ Confirmation on WhatsApp instantly','⏰ Reminder 1 day before','📏 Precise measurements recorded to your profile','🧵 Reused for every future order'].map(x=>`<div style="font-size:.84rem;color:var(--muted);padding:5px 0">${x}</div>`).join('')}
+          </div>
+        </div>
+      </div>
+    </div></section>`;
+  }
+  function calendarWidget() {
+    const days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+    const dates = [4,5,6,7,8,9,10];
+    const slots = { '4':'full', '5':'2 left', '6':'open', '7':'open', '8':'1 left', '9':'open', '10':'holiday' };
+    return `<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px">
+      ${days.map((d,i)=>{
+        const st = Object.values(slots)[i];
+        const disabled = st==='full'||st==='holiday';
+        const color = disabled?'var(--muted)':st.includes('left')?'#a6761d':'#2f9e5f';
+        return `<div style="text-align:center;padding:10px 4px;border-radius:12px;border:1px solid var(--line);${disabled?'opacity:.5':'cursor:pointer'}" ${!disabled?`onclick="toast('Slot selected: Aug ${dates[i]}','📅')"`:''}>
+          <div style="font-size:.66rem;color:var(--muted)">${d}</div>
+          <div style="font-weight:700;font-size:1.1rem">${dates[i]}</div>
+          <div style="font-size:.6rem;color:${color};font-weight:600">${st}</div>
+        </div>`;
+      }).join('')}
+    </div>`;
+  }
+  function setBookType(t) { state.booking.type = t; renderView('booking'); }
+  function confirmBooking() {
+    toast('Booking confirmed! Details sent to WhatsApp ✅', '📅');
+    setTimeout(()=>toast('Reminder scheduled 1 day before ⏰', '🔔'), 1000);
+  }
+
+  function view_track() {
+    return `
+    <section class="block"><div class="wrap">
+      <div class="section-head reveal"><div><div class="eyebrow">Order #THU-2048</div><h2 class="section-title">Track Your Order</h2><div class="gold-line"></div></div>
+      <button class="btn btn-wa btn-sm reveal" onclick="waChat('Track my Thulya order #THU-2048')">💬 Get updates on WhatsApp</button></div>
+      <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:24px" class="reveal">
+        <div class="panel" style="padding:26px">
+          <div style="display:flex;gap:14px;align-items:center;margin-bottom:20px">
+            ${phEl('g3','👚','Peacock Aari Blouse','').replace('class="ph','style="width:70px;height:88px;border-radius:12px" class="ph')}
+            <div><div style="font-weight:700">Peacock Aari Blouse — Custom</div>
+            <div style="font-size:.8rem;color:var(--muted)">SKU THU-ABL-032 · Size M · ₹2,750</div>
+            <span class="chip info" style="margin-top:6px;display:inline-block">Est. delivery · Aug 12</span></div>
+          </div>
+          <div style="border-top:1px solid var(--line);padding-top:16px">
+            <div style="font-weight:600;margin-bottom:6px">Master Tailor</div>
+            <div class="li" style="border:none"><div class="av" style="background:var(--grad-royal)"></div><div class="grow"><div class="t">Priya · Senior Master</div><div class="s">★ 4.9 · 320 outfits crafted</div></div><span class="chip ok">On track</span></div>
+          </div>
+          <div style="margin-top:16px;background:var(--bg-alt);border-radius:14px;padding:16px">
+            <div style="font-size:.8rem;color:var(--muted);margin-bottom:6px">Progress</div>
+            <div class="bar-track" style="height:9px"><div class="bar-fill" style="width:42%"></div></div>
+            <div style="font-size:.76rem;margin-top:8px;font-weight:600">Stage 4 of 9 · Stitching in progress</div>
+          </div>
+        </div>
+        <div class="panel" style="padding:26px">
+          <div style="font-weight:600;margin-bottom:20px">Progress Timeline</div>
+          <div class="timeline">
+            ${ORDER_STAGES.map((st,i)=>{
+              const cls = i<ORDER_CURRENT?'done':i===ORDER_CURRENT?'active':'';
+              const icon = i<ORDER_CURRENT?'✓':i===ORDER_CURRENT?'●':'○';
+              return `<div class="tl-row ${cls}">
+                <div class="tl-dot">${icon}</div>${i<ORDER_STAGES.length-1?'<div class="tl-line"></div>':''}
+                <div class="tl-body ${i>ORDER_CURRENT?'upcoming':''}"><div class="t">${st.t}</div><div class="s">${st.s}</div></div>
+              </div>`;
+            }).join('')}
+          </div>
+        </div>
+      </div>
+    </div></section>`;
+  }
+
+  // ---- Dashboards ----
+  function view_account() {
+    const role = state.dashRole;
+    return `
+    <section class="block"><div class="wrap">
+      <div class="section-head reveal"><div><div class="eyebrow">Control Center</div><h2 class="section-title">Dashboards</h2><div class="gold-line"></div></div></div>
+      <div class="dash-tabs reveal">
+        <button class="${role==='customer'?'active':''}" onclick="setRole('customer')">👤 Customer</button>
+        <button class="${role==='admin'?'active':''}" onclick="setRole('admin')">🏬 Boutique Admin</button>
+        <button class="${role==='tailor'?'active':''}" onclick="setRole('tailor')">🧵 Tailor / Master</button>
+      </div>
+      <div class="reveal">${role==='customer'?dashCustomer():role==='admin'?dashAdmin():dashTailor()}</div>
+    </div></section>`;
+  }
+  function setRole(r) { state.dashRole = r; renderView('account'); }
+
+  function dashCustomer() {
+    const wishItems = state.wishlist.map(byId).filter(Boolean);
+    return `
+    <div class="stat-grid">
+      ${statCard('b1','🛍️','3','Active Orders','2 in stitching')}
+      ${statCard('b2','📏','5','Saved Measurements','Blouse, Salwar…')}
+      ${statCard('b3','💎','1,240','Loyalty Points','Gold Member')}
+      ${statCard('b4','♡',String(state.wishlist.length),'Wishlist Items','Saved designs')}
+    </div>
+    <div class="dash-cols">
+      <div class="list-panel">
+        <h4>My Orders <a class="link-more" onclick="go('track')">Track →</a></h4>
+        ${[['Peacock Aari Blouse','#THU-2048 · Stitching','warn','Aug 12'],['Kanjivaram Silk','#THU-2041 · Delivered','ok','Delivered'],['Modal Silk Saree','#THU-2037 · Dispatched','info','Aug 8']].map(([n,s,c,d])=>`
+          <div class="li">${phEl('g'+((n.length%6)+1),'🥻','')} <div class="grow"><div class="t">${n}</div><div class="s">${s}</div></div><span class="chip ${c}">${d}</span></div>`).join('')}
+      </div>
+      <div class="list-panel">
+        <h4>My Wishlist</h4>
+        ${wishItems.length ? wishItems.slice(0,4).map(p=>`<div class="li" style="cursor:pointer" onclick="openProduct('${p.id}')">${phEl(p.g,p.em,'')}<div class="grow"><div class="t">${p.name}</div><div class="s">${fmt(p.price)}</div></div><button class="btn btn-gold btn-sm" onclick="addToCart('${p.id}','${p.sizes[0]}');event.stopPropagation()">Add</button></div>`).join('') : '<div class="empty-state"><div class="em">♡</div><p style="font-size:.85rem">No saved items yet.</p></div>'}
+      </div>
+    </div>
+    <div class="dash-cols" style="margin-top:20px">
+      <div class="list-panel">
+        <h4>My Measurements 📏</h4>
+        ${[['Blouse','B 36 · W 30 · Shoulder 14 · Sleeve 8'],['Salwar','W 32 · Hip 40 · Length 40'],['Anarkali','B 36 · L 52 · Flare Full']].map(([t,s])=>`<div class="li"><div class="av" style="background:var(--grad-gold)"></div><div class="grow"><div class="t">${t}</div><div class="s">${s}</div></div><span class="chip ok">Saved</span></div>`).join('')}
+      </div>
+      <div class="list-panel">
+        <h4>Appointments & Invoices</h4>
+        <div class="li"><div class="av" style="background:var(--grad-royal)"></div><div class="grow"><div class="t">Doorstep Measurement</div><div class="s">Aug 8 · 3–4 PM</div></div><span class="chip info">Upcoming</span></div>
+        <div class="li"><div class="av" style="background:var(--blush);"></div><div class="grow"><div class="t">Invoice #INV-1188</div><div class="s">₹8,499 · Kanjivaram</div></div><button class="btn btn-ghost btn-sm">⬇ PDF</button></div>
+        <div class="li"><div class="av" style="background:var(--blush);"></div><div class="grow"><div class="t">Invoice #INV-1174</div><div class="s">₹2,750 · Aari Blouse</div></div><button class="btn btn-ghost btn-sm">⬇ PDF</button></div>
+      </div>
+    </div>`;
+  }
+
+  function dashAdmin() {
+    return `
+    <div class="stat-grid">
+      ${statCard('b2','📦','28',"Today's Orders",'▲ 12% vs yesterday','up')}
+      ${statCard('b3','💰','₹1.24L',"Today's Revenue",'▲ 8% this week','up')}
+      ${statCard('b1','📅','9','Bookings Today','3 doorstep')}
+      ${statCard('b4','🧵','14','Pending Stitching','2 priority')}
+    </div>
+    <div class="dash-cols">
+      <div class="list-panel">
+        <h4>Popular Products 🔥</h4>
+        ${PRODUCTS.slice(0,5).map((p,i)=>`<div class="li">${phEl(p.g,p.em,'')}<div class="grow"><div class="t">${p.name}</div><div class="bar-track"><div class="bar-fill" style="width:${90-i*14}%"></div></div></div><span style="font-weight:700;font-size:.85rem">${140-i*22} sold</span></div>`).join('')}
+      </div>
+      <div class="list-panel">
+        <h4>Low Stock Alerts ⚠️</h4>
+        ${PRODUCTS.filter(p=>p.stock<=7).map(p=>`<div class="li">${phEl(p.g,p.em,'')}<div class="grow"><div class="t">${p.name}</div><div class="s">${p.sku}</div></div><span class="chip warn">${p.stock} left</span></div>`).join('')}
+        <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center;margin-top:12px">+ Restock / Add Product</button>
+      </div>
+    </div>
+    <div class="dash-cols" style="margin-top:20px">
+      <div class="list-panel">
+        <h4>Upcoming Appointments</h4>
+        ${[['Divya R.','Doorstep · Blouse','3–4 PM','info'],['Kavya N.','Boutique · Lehenga','4–5 PM','info'],['Sneha I.','Video · Anarkali','5–6 PM','warn']].map(([n,s,t,c])=>`<div class="li"><div class="av" style="background:var(--grad-royal)"></div><div class="grow"><div class="t">${n}</div><div class="s">${s}</div></div><span class="chip ${c}">${t}</span></div>`).join('')}
+      </div>
+      <div class="list-panel">
+        <h4>Pricing & Campaigns</h4>
+        <div class="li"><div class="grow"><div class="t">Festival Sale (THULYA10)</div><div class="s">10% off · Ends Aug 20</div></div><span class="chip ok">Live</span></div>
+        <div class="li"><div class="grow"><div class="t">GST Setting</div><div class="s">5% on apparel</div></div><span class="chip info">Config</span></div>
+        <div class="li"><div class="grow"><div class="t">WhatsApp Campaign</div><div class="s">Navratri · 2,400 contacts</div></div><button class="btn btn-wa btn-sm">Send</button></div>
+        <div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-ghost btn-sm" style="flex:1;justify-content:center">📊 Export Report</button><button class="btn btn-gold btn-sm" style="flex:1;justify-content:center">+ New Offer</button></div>
+      </div>
+    </div>`;
+  }
+
+  function dashTailor() {
+    return `
+    <div class="stat-grid">
+      ${statCard('b4','🧵','6',"Today's Jobs",'2 priority')}
+      ${statCard('b3','⏰','3','Due Today','On schedule')}
+      ${statCard('b2','✅','142','Completed','This month')}
+      ${statCard('b1','⭐','4.9','My Rating','320 reviews')}
+    </div>
+    <div class="dash-cols">
+      <div class="list-panel">
+        <h4>Priority Job Queue</h4>
+        ${[['Peacock Aari Blouse','#THU-2048 · Size M','hot','Due Aug 10'],['Bridal Lehenga','#THU-2050 · Size L','warn','Due Aug 14'],['Princess-Cut Blouse','#THU-2052 · Size S','info','Due Aug 16'],['Anarkali Suit','#THU-2053 · Size M','info','Due Aug 18']].map(([n,s,c,d])=>`
+        <div class="li">${phEl('g'+((n.length%6)+1),'🪡','')}<div class="grow"><div class="t">${n}</div><div class="s">${s}</div></div><div style="text-align:right"><span class="chip ${c}">${d}</span></div></div>`).join('')}
+      </div>
+      <div class="list-panel">
+        <h4>Update Progress</h4>
+        <div style="font-size:.84rem;color:var(--muted);margin-bottom:12px">Order #THU-2048 · Peacock Aari Blouse</div>
+        ${['Order Received','Measurement','Cutting','Stitching','Embroidery','Quality Check'].map((s,i)=>`
+        <div class="li" style="padding:8px 0"><div class="tl-dot" style="width:26px;height:26px;font-size:.72rem;${i<3?'background:var(--grad-royal);color:#fff;border:none':i===3?'background:var(--grad-gold);border:none':''}">${i<3?'✓':i===3?'●':'○'}</div><div class="grow"><div class="t" style="font-size:.84rem">${s}</div></div>${i===3?'<span class="chip warn">Active</span>':''}</div>`).join('')}
+        <div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-ghost btn-sm" style="flex:1;justify-content:center" onclick="toast('Photo upload ready 📸','📸')">📸 Upload Photo</button><button class="btn btn-primary btn-sm" style="flex:1;justify-content:center" onclick="toast('Stage marked complete ✓','✅')">✓ Mark Complete</button></div>
+      </div>
+    </div>`;
+  }
+
+  function statCard(ic, em, val, lbl, trend, dir) {
+    return `<div class="stat"><div class="ic ${ic}">${em}</div><div class="val">${val}</div><div class="lbl">${lbl}</div>${trend?`<div class="trend ${dir||''}">${trend}</div>`:''}</div>`;
+  }
+
+  // ============ ROUTER ============
+  const VIEWS = { home:view_home, shop:view_shop, tailoring:view_tailoring, booking:view_booking, track:view_track, account:view_account };
+  let currentView = 'home';
+
+  function renderView(name) {
+    const app = document.getElementById('app');
+    app.innerHTML = `<div class="view active" id="view-${name}">${VIEWS[name]()}</div>`;
+    document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('active', b.dataset.nav===name));
+    document.querySelectorAll('[data-wish]').forEach(b=>b.classList.toggle('on', state.wishlist.includes(b.dataset.wish)));
+    initReveal();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function renderAccount() { if (currentView==='account') renderView('account'); }
+  function go(name) { currentView = name; renderView(name); }
+
+  // ============ REVEAL ON SCROLL ============
+  let observer;
+  function initReveal() {
+    if (observer) observer.disconnect();
+    observer = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target); } });
+    }, { threshold:0.08 });
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  }
+
+  // ============ THEME ============
+  function applyTheme() {
+    document.documentElement.setAttribute('data-theme', state.theme);
+    document.getElementById('themeBtn').textContent = state.theme==='dark'?'☀️':'🌙';
+  }
+  function toggleTheme() {
+    state.theme = state.theme==='dark'?'light':'dark';
+    localStorage.setItem('thulya_theme', state.theme);
+    applyTheme();
+  }
+
+  // ============ MOBILE MENU ============
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('show'); }
+
+  // ============ INIT ============
+  applyTheme();
+  renderBadges();
+  renderView('home');
+  </script>
+</body>
+</html>
