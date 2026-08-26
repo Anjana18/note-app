@@ -16,6 +16,7 @@ interactive web prototype** of the customer/admin/tailor experience plus the
 | Path | What it is |
 |---|---|
 | `index.html` | **Working single-file prototype** — no build step, open in any browser |
+| `backend/` | **Spring Boot 3 + MongoDB REST API** — runnable, JWT/RBAC, seeded, tested |
 | `docs/DATABASE_SCHEMA.md` | MongoDB collections, fields, indexes, modelling notes |
 | `docs/API_DOCUMENTATION.md` | REST API (Spring Boot) — all endpoints, roles, payloads |
 | `docs/USER_FLOWS.md` | Mermaid user-flow diagrams for all three roles |
@@ -52,6 +53,23 @@ The prototype is fully interactive (cart, wishlist and theme persist in `localSt
   updates, photo upload, mark complete).
 - **WhatsApp** integration hooks (floating chat, share, order, support), **dark mode**,
   smooth reveal-on-scroll animations, fully responsive down to mobile.
+
+---
+
+## Backend (implemented)
+
+A runnable **Spring Boot 3 + MongoDB** API lives in [`backend/`](backend/). It implements
+auth (JWT + RBAC), catalogue, cart/wishlist with coupon + GST pricing, admin-editable
+tailoring prices, orders with a 9-stage tracking timeline, measurements, appointments
+with slot availability, and the admin/tailor endpoints — with a data seeder and unit tests.
+
+```bash
+cd backend
+docker run -d --name thulya-mongo -p 27017:27017 mongo:6   # if you need Mongo
+mvn spring-boot:run          # API on http://localhost:8080/api/v1
+mvn test                     # 12 unit tests, no Mongo required
+```
+See [`backend/README.md`](backend/README.md) for the full endpoint map and a curl walkthrough.
 
 ---
 
