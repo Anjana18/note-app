@@ -1,6 +1,6 @@
 # Learning Notes: Java & Cloud-Native Backend Course
 
-`Java-Backend-Complete-Course.pdf` is the full course in 7 modules and 24 topics, with a capstone project and an answer key.
+`Java-Backend-Complete-Course.pdf` is the full course in 7 modules and 29 topics, including Java 8 → 25 features, with a capstone project and an answer key.
 
 Rebuild after editing the content (`src/m1.py` … `src/m7.py`):
 

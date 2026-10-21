@@ -1,8 +1,11 @@
+from m1_modern import TOPICS as MODERN_JAVA
+
 MODULE = {
-    "title": "Java Core Internals",
-    "intro": "Everything in the backend stack runs on the JVM. Knowing how memory, collections and threads "
-             "really work is what separates someone who *uses* Spring Boot from someone who can debug it "
-             "at 2 a.m. when production is slow.",
+    "title": "Java Core: Internals & Modern Java (8 → 25)",
+    "intro": "Everything in the backend stack runs on the JVM. This module covers how memory and collections "
+             "really work, the modern language features from Java 8 to Java 25 that every Spring Boot codebase "
+             "uses (lambdas, streams, Optional, records, sealed types, pattern matching), and finally "
+             "concurrency and virtual threads.",
     "topics": [
         # ------------------------------------------------------------------ 1.1
         {
@@ -289,3 +292,6 @@ spring:
         },
     ],
 }
+
+# Order: JVM → Collections → Java 8 … 25 language features → Multithreading → Virtual Threads
+MODULE["topics"][2:2] = MODERN_JAVA

@@ -42,17 +42,23 @@ S = {
                          spaceAfter=2),
     "cell": ParagraphStyle("cell", fontName="DV", fontSize=8.6, leading=11.4),
     "code": ParagraphStyle("code", fontName="DVM", fontSize=7.5, leading=9.4),
-    "toc0": ParagraphStyle("toc0", fontName="DVB", fontSize=10.5, leading=13.5, spaceBefore=2),
-    "toc1": ParagraphStyle("toc1", fontName="DV", fontSize=9, leading=11.2, leftIndent=14),
+    "toc0": ParagraphStyle("toc0", fontName="DVB", fontSize=10, leading=12, spaceBefore=0),
+    "toc1": ParagraphStyle("toc1", fontName="DV", fontSize=8.6, leading=9.8, leftIndent=14),
 }
 
 
 def md(t):
     t = t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-    t = re.sub(r"`([^`]+)`", r"<font name='DVM' color='#7a2e0e'>\1</font>", t)
+    spans = []                                   # protect `code` from bold/italic parsing
+
+    def stash(m):
+        spans.append(m.group(1))
+        return f"\x00{len(spans) - 1}\x00"
+    t = re.sub(r"`([^`]+)`", stash, t)
     t = re.sub(r"\*\*([^*]+)\*\*", r"<b>\1</b>", t)
     t = re.sub(r"(?<![\w*])\*([^*]+)\*(?![\w*])", r"<i>\1</i>", t)
-    return t
+    return re.sub("\x00(\\d+)\x00",
+                  lambda m: f"<font name='DVM' color='#7a2e0e'>{spans[int(m.group(1))]}</font>", t)
 
 
 def P(t, style="p"):

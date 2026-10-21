@@ -36,7 +36,7 @@ front = [
     ])),
     P("Learning path", "h"),
     table([["Module", "Focus", "Why it matters"],
-           ["1. Java Core", "JVM, GC, collections, threads, virtual threads", "The runtime under everything"],
+           ["1. Java Core", "JVM, GC, collections, Java 8 → 25 features (lambdas, streams, Optional, records, sealed, pattern matching), threads, virtual threads", "The language and runtime under everything"],
            ["2. SQL", "Indexes, ACID, isolation levels", "Correct, fast transactional data"],
            ["3. MongoDB", "Document modelling, embed vs reference", "Flexible schemas, read-optimised data"],
            ["4. Redis", "Cache-aside, avalanche/penetration/breakdown", "Speed and protecting the database"],
@@ -44,7 +44,7 @@ front = [
            ["6. Microservices", "Kafka partitions, consumer groups, Saga, outbox", "Scaling teams and systems"],
            ["7. Cloud-Native", "Docker multi-stage, Kubernetes, probes, troubleshooting", "Running it in production"]],
           [0.2, 0.45, 0.35]),
-    P("Versions: examples target **Java 21 (LTS)** and **Spring Boot 3.x**, PostgreSQL 16, MongoDB 7, "
+    P("Versions: examples target **Java 21 (LTS)** (Java 25 LTS notes included) and **Spring Boot 3.x**, PostgreSQL 16, MongoDB 7, "
       "Redis 7, Kafka 3.x and Kubernetes 1.30+."),
     P("Tip: type out the code yourself rather than copy-pasting. Muscle memory matters."),
     PageBreak(),
